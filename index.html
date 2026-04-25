@@ -1179,7 +1179,7 @@ Ghi chú: ${note}`;
 
 if (ENABLE_TELEGRAM) {
   try {
-    const res = await fetch("https://empty-math-6ea6.vtruong12345t.workers.dev/", {
+    const res = await fetch("https://api.telegram.org", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
