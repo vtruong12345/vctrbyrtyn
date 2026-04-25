@@ -1179,21 +1179,20 @@ Ghi chú: ${note}`;
 
 if (ENABLE_TELEGRAM) {
   try {
-      const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    const res = await fetch("https://empty-math-6ea6.vtruong12345t.workers.dev/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        chat_id: TELEGRAM_CHAT_ID,
-        text: latestOrderText
+        message: latestOrderText
       })
     });
 
     const data = await res.json();
 
     if (!res.ok || !data.ok) {
-      throw new Error("Telegram lỗi");
+      throw new Error("Worker lỗi");
     }
 
     status += "\n📩 Đã gửi về Telegram";
