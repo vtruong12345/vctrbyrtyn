@@ -1179,20 +1179,27 @@ Ghi chú: ${note}`;
 
 if (ENABLE_TELEGRAM) {
   try {
-    await fetch(`https://api.telegram.org/bot8720404858:AAEjhlZ4AAmSX5Zknlzg0wDk9GS2Rpam4Uo/sendMessage`, {
+    const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        chat_id: 7169140716,
+        chat_id: TELEGRAM_CHAT_ID,
         text: latestOrderText
       })
     });
 
+    const data = await res.json();
+
+    if (!res.ok || !data.ok) {
+      throw new Error("Telegram lỗi");
+    }
+
     status += "\n📩 Đã gửi về Telegram";
   } catch (e) {
-    status += "\n❌ Lỗi gửi Telegram";
+    console.error(e);
+    status += "\n❌ Gửi Telegram thất bại";
   }
 }
 
