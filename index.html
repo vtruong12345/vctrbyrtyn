@@ -906,7 +906,7 @@
             3. Thay dấu # trong action bên dưới bằng endpoint đó.
             4. Đổi ENABLE_FORMSPREE trong JavaScript cuối file thành true.
           -->
-          <form id="orderForm" action="#" method="POST">
+          <form id="orderForm" action="https://formspree.io/f/xnjlwepd" method="POST">
             <div class="form-grid">
               <label>
                 Họ và tên
@@ -981,8 +981,7 @@
             </div>
 
             <p class="notice">
-              Mặc định form sẽ hiện đơn bên dưới để bạn copy. Nếu muốn tự gửi đơn về email,
-              hãy dùng Formspree và bật cấu hình ở cuối file HTML.
+              Form này đã cấu hình gửi đơn về email qua Formspree. Hãy thay endpoint Formspree trong thẻ form bằng link thật của bạn.
             </p>
 
             <div class="success-box" id="successBox"></div>
@@ -1045,9 +1044,9 @@
          - Đổi action của form bên trên từ "#" thành endpoint Formspree.
          - Đổi ENABLE_FORMSPREE = true.
     */
-    const ENABLE_FORMSPREE = false;
+    const ENABLE_FORMSPREE = true;
     
-     const ENABLE_TELEGRAM = true;
+     const ENABLE_TELEGRAM = false;
 
     const TELEGRAM_BOT_TOKEN = "8720404858:AAEjhlZ4AAmSX5Zknlzg0wDk9GS2Rpam4Uo";
     const TELEGRAM_CHAT_ID = "7169140716";
@@ -1178,28 +1177,7 @@ Ghi chú: ${note}`;
      let status = "\n\n✅ Đã tạo đơn";
 
 if (ENABLE_TELEGRAM) {
-  try {
-    const res = await fetch("https://api.telegram.org", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        message: latestOrderText
-      })
-    });
-
-    const data = await res.json();
-
-    if (!res.ok || !data.ok) {
-      throw new Error("Worker lỗi");
-    }
-
-    status += "\n📩 Đã gửi về Telegram";
-  } catch (e) {
-    console.error(e);
-    status += "\n❌ Gửi Telegram thất bại";
-  }
+  status += "\n⚠️ Telegram đang tắt. Bản này dùng Formspree để gửi đơn về email.";
 }
 
 successBox.textContent = latestOrderText + status;
@@ -1225,7 +1203,7 @@ successBox.textContent = latestOrderText + status;
 
           successBox.textContent = latestOrderText + "\n\n✅ Đã gửi đơn thành công về email/Formspree.";
         } catch (error) {
-          successBox.textContent = latestOrderText + "\n\n⚠️ Đơn đã tạo trên website nhưnghưa c gửi được qua Formspree. Vui lòng kiểm tra endpoint.";
+          successBox.textContent = latestOrderText + "\n\n⚠️ Đơn đã tạo trên website nhưng chưa gửi được qua Formspree. Vui lòng kiểm tra endpoint.";
         }
       }
 
