@@ -1046,6 +1046,11 @@
          - Đổi ENABLE_FORMSPREE = true.
     */
     const ENABLE_FORMSPREE = false;
+    
+     const ENABLE_TELEGRAM = true;
+
+    const TELEGRAM_BOT_TOKEN = "8720404858:AAEjhlZ4AAmSX5Zknlzg0wDk9GS2Rpam4Uo";
+    const TELEGRAM_CHAT_ID = "7169140716";
 
     const planSelect = document.getElementById("plan");
     const quantityInput = document.getElementById("quantity");
@@ -1170,7 +1175,28 @@ Ghi chú: ${note}`;
 
       successBox.style.display = "block";
       copyRow.style.display = "flex";
-      successBox.textContent = latestOrderText + "\n\n✅ Đã tạo đơn. Bạn có thể copy đơn hoặc gửi qua Zalo.";
+     let status = "\n\n✅ Đã tạo đơn";
+
+if (ENABLE_TELEGRAM) {
+  try {
+    await fetch(`https://api.telegram.org/bot8720404858:AAEjhlZ4AAmSX5Zknlzg0wDk9GS2Rpam4Uo/sendMessage`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        chat_id: 7169140716,
+        text: latestOrderText
+      })
+    });
+
+    status += "\n📩 Đã gửi về Telegram";
+  } catch (e) {
+    status += "\n❌ Lỗi gửi Telegram";
+  }
+}
+
+successBox.textContent = latestOrderText + status;
 
       const zaloBase = "https://zalo.me/0900000000";
       sendZaloBtn.href = zaloBase;
