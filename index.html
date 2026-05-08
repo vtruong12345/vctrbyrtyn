@@ -602,8 +602,13 @@
       flex-wrap: wrap;
       margin-top: 14px;
     }
+.order-column {
+  display: grid;
+  gap: 18px;
+}
+
 .bank-box{
-  margin-top:20px;
+  margin-top:0;
   padding:20px;
   border-radius:20px;
   background:rgba(255,255,255,0.06);
@@ -905,7 +910,7 @@
             <div class="info-item">
               <strong>Zalo hỗ trợ:</strong><br />
               <!-- SỬA SỐ ZALO Ở ĐÂY -->
-             0981251350
+              0981251350
             </div>
             <div class="info-item">
               <strong>Thời gian xử lý:</strong><br />
@@ -922,117 +927,116 @@
           </div>
         </aside>
 
-       </div>
+        <div class="order-column">
+          <div class="panel">
+            <h2>Form đặt mua</h2>
 
-<div class="bank-box">
-  <h3>Quét QR thanh toán</h3>
+            <!-- 
+              KẾT NỐI FORMSPREE:
+              1. Tạo form trên Formspree.
+              2. Lấy endpoint dạng https://formspree.io/f/abcxyz.
+              3. Thay dấu # trong action bên dưới bằng endpoint đó.
+              4. Đổi ENABLE_FORMSPREE trong JavaScript cuối file thành true.
+            -->
+            <form id="orderForm" action="https://formspree.io/f/xnjlwepd" method="POST">
+              <div class="form-grid">
+                <label>
+                  Họ và tên
+                  <input id="name" name="ho_ten" type="text" placeholder="Ví dụ: Nguyễn Văn A" required />
+                </label>
 
-  <img
-    id="qrBankImage"
-    src="https://img.vietqr.io/image/MB-0981251350-compact2.png"
-    alt="QR ngân hàng"
-    class="qr-image"
-  >
+                <label>
+                  Số điện thoại Zalo
+                  <input id="phone" name="so_dien_thoai_zalo" type="tel" placeholder="Ví dụ: 0xxxxxxx" required />
+                  <span class="error" id="phoneError">Vui lòng nhập đúng số zalo của bạn .</span>
+                </label>
+              </div>
 
-  <div class="bank-info">
-    <p><b>Ngân hàng:</b> MB Bank</p>
-    <p><b>Số tài khoản:</b> 0981251350</p>
-    <p><b>Chủ tài khoản:</b> VAN TRUONG</p>
-    <p><b>Nội dung:</b> Tự tạo theo gói</p>
-  </div>
-</div>
+              <div class="form-grid">
+                <label>
+                  Email nhận thông tin
+                  <input id="email" name="email" type="email" placeholder="email@example.com" />
+                </label>
 
-</aside>
+                <label>
+                  Chọn gói
+                  <select id="plan" name="goi_da_chon" required>
+                    <option value="" data-price="0">-- Chọn gói --</option>
+                    <option value="Meitu VIP+" data-price="70000">Meitu VIP+ - 70K</option>
+                    <option value="Wink SVip+" data-price="169000">Wink SVip+ - 169K</option>
+                    <option value="Hypic" data-price="75000">Hypic - 75K</option>
+                    <option value="XingHui" data-price="199000">XingHui - 199K</option>
+                    <option value="XingTu" data-price="159000">XingTu - 159K</option>
+                    <option value="YouTube Premium" data-price="59000">YouTube Premium - 59K</option>
+                    <option value="ChatGPT Plus" data-price="150000">ChatGPT Plus- 150K</option>
+                    <option value="CapCut Pro" data-price="49000">CapCut Pro -49K</option>
+                  </select>
+                </label>
+              </div>
 
-<div class="panel">
-  <h2>Form đặt mua</h2>
+              <div class="form-grid">
+                <label>
+                  Số lượng
+                  <input id="quantity" name="so_luong" type="number" min="1" value="1" required />
+                </label>
 
-          <!-- 
-            KẾT NỐI FORMSPREE:
-            1. Tạo form trên Formspree.
-            2. Lấy endpoint dạng https://formspree.io/f/abcxyz.
-            3. Thay dấu # trong action bên dưới bằng endpoint đó.
-            4. Đổi ENABLE_FORMSPREE trong JavaScript cuối file thành true.
-          -->
-          <form id="orderForm" action="https://formspree.io/f/xnjlwepd" method="POST">
-            <div class="form-grid">
+                <label>
+                  Phương thức thanh toán
+                  <select id="payment" name="phuong_thuc_thanh_toan" required>
+                    <option value="Chuyển khoản ngân hàng">Chuyển khoản ngân hàng</option>
+                    <option value="Ví điện tử">Ví điện tử</option>
+                    <option value="Thanh toán sau khi tư vấn">Thanh toán sau khi tư vấn</option>
+                  </select>
+                </label>
+              </div>
+
               <label>
-                Họ và tên
-                <input id="name" name="ho_ten" type="text" placeholder="Ví dụ: Nguyễn Văn A" required />
+                Ghi chú
+                <textarea id="note" name="ghi_chu" placeholder="Nhập yêu cầu thêm nếu có..."></textarea>
               </label>
 
-              <label>
-                Số điện thoại Zalo
-                <input id="phone" name="so_dien_thoai_zalo" type="tel" placeholder="Ví dụ: 0xxxxxxx" required />
-                <span class="error" id="phoneError">Vui lòng nhập đúng số zalo của bạn .</span>
-              </label>
+              <input id="totalInput" name="tong_tam_tinh" type="hidden" value="0đ" />
+              <input name="_subject" type="hidden" value="Đơn đặt mua mới từ website" />
+
+              <div class="summary" aria-live="polite">
+                <div>Gói đã chọn: <strong id="summaryPlan">Chưa chọn</strong></div>
+                <div>Số lượng: <strong id="summaryQuantity">1</strong></div>
+                <div>Tổng tạm tính: <strong id="summaryTotal">0đ</strong></div>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Gửi đơn đặt mua</button>
+
+              <div class="copy-row" id="copyRow">
+                <button class="btn btn-soft" type="button" id="copyOrderBtn">Copy đơn hàng</button>
+                <!-- SỬA LINK ZALO Ở ĐÂY: đổi số 0981251350 thành số Zalo của bạn -->
+                <a class="btn btn-zalo" id="sendZaloBtn" href="https://zalo.me/0981251350" target="_blank" rel="noopener">Gửi qua Zalo</a>
+              </div>
+
+              <p class="notice">
+                Sau Khi Ấn 'GỬI ĐƠN ĐẶT MUA' Quý Khách Vui Lòng Check Thông Báo ZALO Sẽ Có Thông Báo Từ Phía Chúng Tôi - Nếu Sau 30phut Không Thấy Phản Hồi Từ Chúng Tôi Vui Lòng Liên Hệ Qua Thông Tin Liên Hệ
+              </p>
+
+              <div class="success-box" id="successBox"></div>
+            </form>
+          </div>
+
+          <div class="bank-box">
+            <h3>Quét QR thanh toán</h3>
+
+            <img
+              id="qrBankImage"
+              src="https://img.vietqr.io/image/MB-0981251350-compact2.png"
+              alt="QR ngân hàng"
+              class="qr-image"
+            >
+
+            <div class="bank-info">
+              <p><b>Ngân hàng:</b> MB Bank</p>
+              <p><b>Số tài khoản:</b> 0981251350</p>
+              <p><b>Chủ tài khoản:</b> VAN TRUONG</p>
+              <p><b>Nội dung:</b> Tự tạo theo gói</p>
             </div>
-
-            <div class="form-grid">
-              <label>
-                Email nhận thông tin
-                <input id="email" name="email" type="email" placeholder="email@example.com" />
-              </label>
-
-              <label>
-                Chọn gói
-                <select id="plan" name="goi_da_chon" required>
-                  <option value="" data-price="0">-- Chọn gói --</option>
-                  <option value="Meitu VIP+" data-price="70000">Meitu VIP+ - 70K</option>
-                  <option value="Wink SVip+" data-price="169000">Wink SVip+ - 169K</option>
-                  <option value="Hypic" data-price="75000">Hypic - 75K</option>
-                  <option value="XingHui" data-price="199000">XingHui - 199K</option>
-                  <option value="XingTu" data-price="159000">XingTu - 159K</option>
-                  <option value="YouTube Premium" data-price="59000">YouTube Premium - 59K</option>
-                  <option value="ChatGPT Plus" data-price="150000">ChatGPT Plus- 150K</option>
-                  <option value="CapCut Pro" data-price="49000">CapCut Pro -49K</option>
-                </select>
-              </label>
-            </div>
-
-            <div class="form-grid">
-              <label>
-                Số lượng
-                <input id="quantity" name="so_luong" type="number" min="1" value="1" required />
-              </label>
-
-              <label>
-                Phương thức thanh toán
-                <select id="payment" name="phuong_thuc_thanh_toan" required>
-                  <option value="Chuyển khoản ngân hàng">Chuyển khoản ngân hàng</option>
-                  <option value="Ví điện tử">Ví điện tử</option>
-                  <option value="Thanh toán sau khi tư vấn">Thanh toán sau khi tư vấn</option>
-                </select>
-              </label>
-            </div>
-
-            <label>
-              Ghi chú
-              <textarea id="note" name="ghi_chu" placeholder="Nhập yêu cầu thêm nếu có..."></textarea>
-            </label>
-
-            <input id="totalInput" name="tong_tam_tinh" type="hidden" value="0đ" />
-            <input name="_subject" type="hidden" value="Đơn đặt mua mới từ website" />
-
-            <div class="summary" aria-live="polite">
-              <div>Gói đã chọn: <strong id="summaryPlan">Chưa chọn</strong></div>
-              <div>Số lượng: <strong id="summaryQuantity">1</strong></div>
-              <div>Tổng tạm tính: <strong id="summaryTotal">0đ</strong></div>
-            </div>
-
-            <button class="btn btn-primary" type="submit">Gửi đơn đặt mua</button>
-
-            <div class="copy-row" id="copyRow">
-              <button class="btn btn-soft" type="button" id="copyOrderBtn">Copy đơn hàng</button>
-              <!-- SỬA LINK ZALO Ở ĐÂY: đổi số 0981251350 thành số Zalo của bạn -->
-              <a class="btn btn-zalo" id="sendZaloBtn" href="https://zalo.me/0981251350" target="_blank" rel="noopener">Gửi qua Zalo</a>
-            </div>
-
-            <p class="notice">
-             Sau Khi Ấn 'GỬI ĐƠN ĐẶT MUA' Quý  Khách Vui Lòng Check Thông Báo ZALO Sẽ Có Thông Báo Từ Phía Chúng Tôi - Nếu Sau 30phut Không Thấy Phản Hồi Từ Chúng Tôi Vui Lòng Liên Hệ Qua Thông Tin Liên Hệ
-
-            <div class="success-box" id="successBox"></div>
-          </form>
+          </div>
         </div>
       </div>
     </section>
