@@ -602,7 +602,33 @@
       flex-wrap: wrap;
       margin-top: 14px;
     }
+.bank-box{
+  margin-top:20px;
+  padding:20px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  text-align:center;
+}
 
+.bank-box h3{
+  margin-top:0;
+  margin-bottom:15px;
+}
+
+.qr-image{
+  width:100%;
+  max-width:260px;
+  border-radius:16px;
+  display:block;
+  margin:auto;
+}
+
+.bank-info{
+  margin-top:15px;
+  color:#ddd;
+  line-height:1.8;
+}
     @media (max-width: 1080px) {
       .pricing-grid,
       .steps-grid {
@@ -896,8 +922,30 @@
           </div>
         </aside>
 
-        <div class="panel">
-          <h2>Form đặt mua</h2>
+       </div>
+
+<div class="bank-box">
+  <h3>Quét QR thanh toán</h3>
+
+  <img
+    id="qrBankImage"
+    src="https://img.vietqr.io/image/MB-0981251350-compact2.png"
+    alt="QR ngân hàng"
+    class="qr-image"
+  >
+
+  <div class="bank-info">
+    <p><b>Ngân hàng:</b> MB Bank</p>
+    <p><b>Số tài khoản:</b> 0981251350</p>
+    <p><b>Chủ tài khoản:</b> VAN TRUONG</p>
+    <p><b>Nội dung:</b> Tự tạo theo gói</p>
+  </div>
+</div>
+
+</aside>
+
+<div class="panel">
+  <h2>Form đặt mua</h2>
 
           <!-- 
             KẾT NỐI FORMSPREE:
@@ -1063,6 +1111,7 @@
     const copyRow = document.getElementById("copyRow");
     const copyOrderBtn = document.getElementById("copyOrderBtn");
     const sendZaloBtn = document.getElementById("sendZaloBtn");
+    const qrBankImage = document.getElementById("qrBankImage");
 
     let latestOrderText = "";
 
@@ -1100,6 +1149,17 @@
       summaryQuantity.textContent = quantity;
       summaryTotal.textContent = totalText;
       totalInput.value = totalText;
+      const price = getSelectedPrice();
+const quantityNumber = Math.max(1, Number(quantityInput.value || 1));
+const totalNumber = price * quantityNumber;
+
+if (qrBankImage && totalNumber > 0) {
+  const bankCode = "MB";
+  const accountNumber = "0981251350";
+  const note = encodeURIComponent(`Thanh toan ${plan}`);
+
+  qrBankImage.src = `https://img.vietqr.io/image/${bankCode}-${accountNumber}-compact2.png?amount=${totalNumber}&addInfo=${note}`;
+}
     }
 
     function buildOrderText() {
