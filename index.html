@@ -962,14 +962,14 @@
                   Chọn gói
                   <select id="plan" name="goi_da_chon" required>
                     <option value="" data-price="0">-- Chọn gói --</option>
-                    <option value="Meitu VIP+" data-price="70000">Meitu VIP+ - 70K</option>
-                    <option value="Wink SVip+" data-price="169000">Wink SVip+ - 169K</option>
-                    <option value="Hypic" data-price="75000">Hypic - 75K</option>
-                    <option value="XingHui" data-price="199000">XingHui - 199K</option>
-                    <option value="XingTu" data-price="159000">XingTu - 159K</option>
-                    <option value="YouTube Premium" data-price="59000">YouTube Premium - 59K</option>
-                    <option value="ChatGPT Plus" data-price="150000">ChatGPT Plus- 150K</option>
-                    <option value="CapCut Pro" data-price="49000">CapCut Pro -49K</option>
+                    <option value="Meitu VIP+" data-price="70000">Meitu VIP+ </option>
+                    <option value="Wink SVip+" data-price="169000">Wink SVip+ </option>
+                    <option value="Hypic" data-price="75000">Hypic</option>
+                    <option value="XingHui" data-price="199000">XingHui </option>
+                    <option value="XingTu" data-price="159000">XingTu </option>
+                    <option value="YouTube Premium" data-price="59000">YouTube Premium </option>
+                    <option value="ChatGPT Plus" data-price="150000">ChatGPT Plus</option>
+                    <option value="CapCut Pro" data-price="49000">CapCut Pro </option>
                   </select>
                 </label>
               </div>
@@ -1013,7 +1013,7 @@
               </div>
 
               <p class="notice">
-                Sau Khi Ấn 'GỬI ĐƠN ĐẶT MUA' Quý Khách Vui Lòng Check Thông Báo ZALO Sẽ Có Thông Báo Từ Phía Chúng Tôi - Nếu Sau 30phut Không Thấy Phản Hồi Từ Chúng Tôi Vui Lòng Liên Hệ Qua Thông Tin Liên Hệ
+               Sau Khi Ấn Mua Hàng Quý Khách Vui Lòng Kéo Xuống Sẽ Thấy QR Thanh Toán
               </p>
 
               <div class="success-box" id="successBox"></div>
@@ -1178,7 +1178,7 @@ if (qrBankImage && totalNumber > 0) {
 
       return `Đơn đặt mua mới
 -------------------------
-Cảm Ơn Quý Khách Đã Tin Tưởng Dịch Vụ - Bạn Sẽ Sớm Nhận Được Thông Báo
+Cảm Ơn Quý Khách Đã Tin Tưởng Dịch Vụ - Lướt Xuống Dưới Để Thanh Toán
 Khách hàng: ${name}
 SĐT/Zalo: ${phone}
 Email: ${email}
@@ -1265,7 +1265,7 @@ successBox.textContent = latestOrderText + status;
             throw new Error("Không gửi được đơn qua Formspree");
           }
 
-          successBox.textContent = latestOrderText + "\n\n✅ Đã gửi đơn thành công về email/Formspree.";
+          successBox.textContent = latestOrderText + "\n\n✅ Đã gửi đơn thành công.";
         } catch (error) {
           successBox.textContent = latestOrderText + "\n\n⚠️ Đơn đã tạo trên website nhưng chưa gửi được qua Formspree. Vui lòng kiểm tra endpoint.";
         }
