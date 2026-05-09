@@ -2225,85 +2225,83 @@ successBox.textContent = latestOrderText + status;
     }
 
 
-    const MUSIC_LINK = "DAN_LINK_NHAC_MP3_VAO_DAY";
+    let musicAudioContext = null;
+    let musicMasterGain = null;
+    let musicTimer = null;
+    let musicStep = 0;
+    const musicMelody = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63, 293.66, 349.23];
 
-let backgroundMusic = null;
+    function playMusicNote(frequency) {
+      if (!musicAudioContext || !musicMasterGain) return;
 
-function getBackgroundMusic() {
-  if (!backgroundMusic) {
-    backgroundMusic = new Audio(MUSIC_LINK);
-    backgroundMusic.loop = true;
-    backgroundMusic.volume = 0.45;
-    backgroundMusic.preload = "auto";
+      const now = musicAudioContext.currentTime;
+      const oscillator = musicAudioContext.createOscillator();
+      const noteGain = musicAudioContext.createGain();
 
-    backgroundMusic.addEventListener("error", () => {
-      showToast("Không phát được nhạc. Vui lòng kiểm tra link nhạc.");
-      updateMusicButton(false);
-    });
-  }
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(frequency, now);
 
-  return backgroundMusic;
-}
+      noteGain.gain.setValueAtTime(0.0001, now);
+      noteGain.gain.exponentialRampToValueAtTime(0.08, now + 0.03);
+      noteGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.42);
 
-async function startBackgroundMusic() {
-  if (!MUSIC_LINK || MUSIC_LINK === "https://soundfiles.eu/LK0G1kE93917/file") {
-    showToast("Bạn chưa thay link nhạc MP3");
-    return false;
-  }
+      oscillator.connect(noteGain);
+      noteGain.connect(musicMasterGain);
 
-  try {
-    const audio = getBackgroundMusic();
-    await audio.play();
-    return true;
-  } catch (error) {
-    showToast("Không phát được nhạc. Hãy kiểm tra link MP3.");
-    return false;
-  }
-}
-
-function stopBackgroundMusic() {
-  if (backgroundMusic) {
-    backgroundMusic.pause();
-    backgroundMusic.currentTime = 0;
-  }
-}
-
-function updateMusicButton(isPlaying) {
-  const musicToggleBtn = document.getElementById("musicToggleBtn");
-  if (!musicToggleBtn) return;
-
-  musicToggleBtn.classList.toggle("is-playing", Boolean(isPlaying));
-  musicToggleBtn.textContent = isPlaying ? "♫" : "♪";
-  musicToggleBtn.setAttribute("title", isPlaying ? "Tắt nhạc nền" : "Bật nhạc nền");
-  musicToggleBtn.setAttribute("aria-label", isPlaying ? "Tắt nhạc nền" : "Bật nhạc nền");
-}
-
-function enableMusicButton() {
-  const musicToggleBtn = document.getElementById("musicToggleBtn");
-  if (!musicToggleBtn) return;
-
-  musicToggleBtn.addEventListener("click", async () => {
-    if (backgroundMusic && !backgroundMusic.paused) {
-      stopBackgroundMusic();
-      updateMusicButton(false);
-      showToast("Đã tắt nhạc nền");
-      return;
+      oscillator.start(now);
+      oscillator.stop(now + 0.46);
     }
 
-    const started = await startBackgroundMusic();
-    if (started) {
-      updateMusicButton(true);
-      showToast("Đã bật nhạc nền");
-    }
-  });
+    async function startBackgroundMusic() {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
 
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden && backgroundMusic && !backgroundMusic.paused) {
-      stopBackgroundMusic();
-      updateMusicButton(false);
+      if (!AudioContextClass) {
+        showToast("Trình duyệt không hỗ trợ phát nhạc nền");
+        return false;
+      }
+
+      if (!musicAudioContext) {
+        musicAudioContext = new AudioContextClass();
+        musicMasterGain = musicAudioContext.createGain();
+        musicMasterGain.gain.setValueAtTime(0.22, musicAudioContext.currentTime);
+        musicMasterGain.connect(musicAudioContext.destination);
+      }
+
+      if (musicAudioContext.state === "suspended") {
+        await musicAudioContext.resume();
+      }
+
+      if (musicTimer) return true;
+
+      musicStep = 0;
+      playMusicNote(musicMelody[musicStep]);
+
+      musicTimer = window.setInterval(() => {
+        musicStep = (musicStep + 1) % musicMelody.length;
+        playMusicNote(musicMelody[musicStep]);
+      }, 430);
+
+      return true;
     }
-  });
-}
+
+    function stopBackgroundMusic() {
+      if (musicTimer) {
+        window.clearInterval(musicTimer);
+        musicTimer = null;
+      }
+    }
+
+    function updateMusicButton(isPlaying) {
+      const musicToggleBtn = document.getElementById("musicToggleBtn");
+      if (!musicToggleBtn) return;
+
+      musicToggleBtn.classList.toggle("is-playing", Boolean(isPlaying));
+      musicToggleBtn.textContent = isPlaying ? "♫" : "♪";
+      musicToggleBtn.setAttribute("title", isPlaying ? "Tắt nhạc nền" : "Bật nhạc nền");
+      musicToggleBtn.setAttribute("aria-label", isPlaying ? "Tắt nhạc nền" : "Bật nhạc nền");
+    }
+
+    function enableMusicButton() {
       const musicToggleBtn = document.getElementById("musicToggleBtn");
       if (!musicToggleBtn) return;
 
@@ -2465,6 +2463,83 @@ function enableMusicButton() {
       [planSelect, quantityInput].forEach((field) => {
         field.addEventListener("input", refreshSelectedPlanState);
         field.addEventListener("change", refreshSelectedPlanState);
+      });
+    }
+
+
+    /* === CUSTOM MUSIC LINK: added only, no original content removed === */
+    const CUSTOM_MUSIC_LINK = "https://soundfiles.eu/LK0G1kE93917/file";
+    let uploadedBackgroundMusic = null;
+
+    function getUploadedBackgroundMusic() {
+      if (!uploadedBackgroundMusic) {
+        uploadedBackgroundMusic = new Audio(CUSTOM_MUSIC_LINK);
+        uploadedBackgroundMusic.loop = true;
+        uploadedBackgroundMusic.volume = 0.45;
+        uploadedBackgroundMusic.preload = "auto";
+
+        uploadedBackgroundMusic.addEventListener("ended", () => {
+          updateMusicButton(false);
+        });
+
+        uploadedBackgroundMusic.addEventListener("error", () => {
+          updateMusicButton(false);
+          showToast("Không phát được nhạc. Vui lòng kiểm tra link nhạc.");
+        });
+      }
+
+      return uploadedBackgroundMusic;
+    }
+
+    async function startBackgroundMusic() {
+      if (!CUSTOM_MUSIC_LINK) {
+        showToast("Chưa có link nhạc");
+        return false;
+      }
+
+      try {
+        const audio = getUploadedBackgroundMusic();
+        await audio.play();
+        return true;
+      } catch (error) {
+        showToast("Không phát được nhạc. Vui lòng bấm lại hoặc kiểm tra link.");
+        return false;
+      }
+    }
+
+    function stopBackgroundMusic() {
+      if (uploadedBackgroundMusic) {
+        uploadedBackgroundMusic.pause();
+        uploadedBackgroundMusic.currentTime = 0;
+      }
+    }
+
+    function enableMusicButton() {
+      const musicToggleBtn = document.getElementById("musicToggleBtn");
+      if (!musicToggleBtn) return;
+
+      musicToggleBtn.addEventListener("click", async () => {
+        const audio = getUploadedBackgroundMusic();
+
+        if (!audio.paused) {
+          stopBackgroundMusic();
+          updateMusicButton(false);
+          showToast("Đã tắt nhạc nền");
+          return;
+        }
+
+        const started = await startBackgroundMusic();
+        if (started) {
+          updateMusicButton(true);
+          showToast("Đã bật nhạc nền");
+        }
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden && uploadedBackgroundMusic && !uploadedBackgroundMusic.paused) {
+          stopBackgroundMusic();
+          updateMusicButton(false);
+        }
       });
     }
 
