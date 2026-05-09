@@ -642,6 +642,577 @@
   color:#ddd;
   line-height:1.8;
 }
+    @media (prefers-reduced-motion: no-preference) {
+      body::before {
+        animation: floatGlow 16s ease-in-out infinite alternate;
+      }
+
+      .hero > .container,
+      .price-card,
+      .step,
+      .panel,
+      .bank-box,
+      details {
+        animation: fadeUp 0.72s ease both;
+      }
+
+      .price-card:nth-child(2),
+      .step:nth-child(2),
+      details:nth-child(2) {
+        animation-delay: 0.05s;
+      }
+
+      .price-card:nth-child(3),
+      .step:nth-child(3),
+      details:nth-child(3) {
+        animation-delay: 0.1s;
+      }
+
+      .price-card:nth-child(4),
+      .step:nth-child(4),
+      details:nth-child(4) {
+        animation-delay: 0.15s;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes floatGlow {
+        from {
+          transform: translate3d(-1.5%, -1%, 0) scale(1);
+        }
+        to {
+          transform: translate3d(1.5%, 1%, 0) scale(1.04);
+        }
+      }
+    }
+
+    body {
+      position: relative;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(56, 189, 248, 0.28), transparent 26rem),
+        radial-gradient(circle at 88% 18%, rgba(244, 114, 182, 0.16), transparent 24rem),
+        radial-gradient(circle at 76% 82%, rgba(129, 140, 248, 0.28), transparent 28rem),
+        linear-gradient(180deg, #07111f 0%, #0f172a 45%, #111827 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(125, 211, 252, 0.16), transparent 22rem),
+        radial-gradient(circle at 70% 75%, rgba(196, 181, 253, 0.14), transparent 26rem);
+      filter: blur(2px);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.42;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.72), transparent 80%);
+    }
+
+    ::selection {
+      color: #06111f;
+      background: #7dd3fc;
+    }
+
+    .container {
+      width: min(1210px, calc(100% - 36px));
+    }
+
+    .topbar {
+      background:
+        linear-gradient(90deg, rgba(14, 165, 233, 0.2), rgba(129, 140, 248, 0.18)),
+        rgba(2, 6, 23, 0.62);
+      backdrop-filter: blur(14px);
+      box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    header {
+      padding: 14px 0;
+      background: rgba(7, 17, 31, 0.72);
+      box-shadow: 0 16px 50px rgba(2, 6, 23, 0.22);
+    }
+
+    .logo {
+      padding: 7px 10px 7px 7px;
+      border-radius: 20px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .logo:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .logo-mark {
+      box-shadow:
+        0 10px 26px rgba(56, 189, 248, 0.22),
+        0 0 0 1px rgba(255, 255, 255, 0.16);
+    }
+
+    .nav-links {
+      gap: 8px;
+      padding: 7px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.055);
+      box-shadow: 0 16px 40px rgba(2, 6, 23, 0.18);
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 9px 12px;
+      border-radius: 999px;
+      transition: color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
+    }
+
+    .mini-btn {
+      border: 0;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(129, 140, 248, 0.95));
+      color: #06111f !important;
+      box-shadow: 0 12px 28px rgba(56, 189, 248, 0.22);
+    }
+
+    .hero {
+      padding: 86px 0 52px;
+    }
+
+    .badge {
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 14px 36px rgba(2, 6, 23, 0.2);
+      backdrop-filter: blur(14px);
+    }
+
+    h1 {
+      text-shadow: 0 18px 60px rgba(56, 189, 248, 0.16);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #7dd3fc 0%, #a5b4fc 42%, #f9a8d4 78%, #fde68a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero p {
+      color: #dbeafe;
+    }
+
+    .hero-card,
+    .price-card,
+    .panel,
+    .bank-box,
+    details,
+    .step {
+      backdrop-filter: blur(18px);
+      box-shadow:
+        0 24px 70px rgba(2, 6, 23, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-card {
+      border-radius: 32px;
+      transform: translateZ(0);
+    }
+
+    .hero-card::before {
+      width: 230px;
+      height: 230px;
+      right: -85px;
+      top: -95px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.36), rgba(129, 140, 248, 0.1) 60%, transparent 72%);
+      filter: blur(0);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: 31px;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(255,255,255,0.16), transparent 34%, rgba(255,255,255,0.06));
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      padding: 1px;
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .quick-item {
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .quick-item:hover {
+      transform: translateX(4px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(125, 211, 252, 0.3);
+    }
+
+    .btn {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      border-radius: 16px;
+      letter-spacing: 0.2px;
+      box-shadow:
+        0 14px 30px rgba(2, 6, 23, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        filter 0.2s ease;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      opacity: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.32) 35%, transparent 70%);
+      transform: translateX(-120%);
+      transition: transform 0.45s ease, opacity 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow:
+        0 20px 42px rgba(2, 6, 23, 0.28),
+        0 0 32px rgba(56, 189, 248, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      filter: saturate(1.08);
+    }
+
+    .btn:hover::before {
+      opacity: 1;
+      transform: translateX(120%);
+    }
+
+    .btn:active {
+      transform: translateY(-1px) scale(0.99);
+    }
+
+    .btn:focus-visible,
+    .nav-links a:focus-visible,
+    summary:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid rgba(125, 211, 252, 0.85);
+      outline-offset: 3px;
+    }
+
+    .btn-primary {
+      background:
+        linear-gradient(135deg, #67e8f9, #a5b4fc 55%, #f9a8d4);
+      box-shadow:
+        0 18px 38px rgba(56, 189, 248, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.36);
+    }
+
+    .btn-soft {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.065));
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-soft:hover {
+      border-color: rgba(125, 211, 252, 0.44);
+      background:
+        linear-gradient(180deg, rgba(125, 211, 252, 0.16), rgba(255, 255, 255, 0.08));
+    }
+
+    .btn-zalo {
+      background:
+        linear-gradient(135deg, rgba(52, 211, 153, 0.22), rgba(34, 197, 94, 0.1));
+      box-shadow: 0 18px 36px rgba(52, 211, 153, 0.16);
+    }
+
+    .btn-zalo:hover {
+      border-color: rgba(74, 222, 128, 0.56);
+      background:
+        linear-gradient(135deg, rgba(52, 211, 153, 0.34), rgba(34, 197, 94, 0.16));
+    }
+
+    .section-title {
+      padding: 2px 0;
+    }
+
+    .section-title h2 {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 58px;
+      height: 4px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #38bdf8, #818cf8, #f9a8d4);
+      box-shadow: 0 0 26px rgba(56, 189, 248, 0.36);
+    }
+
+    .pricing-grid {
+      gap: 20px;
+    }
+
+    .price-card {
+      border-radius: 30px;
+      transform: translateZ(0);
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+    }
+
+    .price-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      opacity: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.55), rgba(129, 140, 248, 0.38), rgba(249, 168, 212, 0.34));
+      transition: opacity 0.22s ease;
+    }
+
+    .price-card::after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      right: -68px;
+      top: -68px;
+      border-radius: 999px;
+      background: rgba(125, 211, 252, 0.12);
+      transition: transform 0.28s ease, opacity 0.28s ease;
+    }
+
+    .price-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(125, 211, 252, 0.48);
+      background: rgba(255, 255, 255, 0.105);
+      box-shadow:
+        0 30px 78px rgba(2, 6, 23, 0.42),
+        0 0 38px rgba(56, 189, 248, 0.11),
+        inset 0 1px 0 rgba(255, 255, 255, 0.13);
+    }
+
+    .price-card:hover::before {
+      opacity: 0.65;
+    }
+
+    .price-card:hover::after {
+      transform: scale(1.12);
+      opacity: 0.9;
+    }
+
+    .tag {
+      border: 1px solid rgba(125, 211, 252, 0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+
+    .price {
+      background: linear-gradient(135deg, #ffffff, #bae6fd 45%, #c4b5fd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 14px 34px rgba(56, 189, 248, 0.12);
+    }
+
+    .price small {
+      color: #cbd5e1;
+      -webkit-text-fill-color: #cbd5e1;
+    }
+
+    .features li::before {
+      box-shadow: 0 8px 18px rgba(52, 211, 153, 0.18);
+    }
+
+    .step {
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .step:hover {
+      transform: translateY(-5px);
+      border-color: rgba(125, 211, 252, 0.36);
+      background: rgba(255, 255, 255, 0.095);
+    }
+
+    .step-number {
+      box-shadow: 0 12px 26px rgba(56, 189, 248, 0.24);
+    }
+
+    .panel,
+    .bank-box {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.105), rgba(255,255,255,0.06));
+    }
+
+    .info-item {
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .info-item:hover {
+      transform: translateX(4px);
+      border-color: rgba(125, 211, 252, 0.26);
+      background: rgba(255, 255, 255, 0.085);
+    }
+
+    input,
+    select,
+    textarea {
+      min-height: 48px;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, transform 0.18s ease;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      background: rgba(2, 6, 23, 0.52);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      transform: translateY(-1px);
+      background: rgba(2, 6, 23, 0.58);
+    }
+
+    .summary {
+      border-style: solid;
+      background:
+        linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(129, 140, 248, 0.08));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    }
+
+    .success-box {
+      box-shadow: 0 16px 36px rgba(52, 211, 153, 0.12);
+    }
+
+    .copy-row {
+      align-items: center;
+    }
+
+    .bank-box {
+      box-shadow:
+        0 26px 70px rgba(2, 6, 23, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .qr-image {
+      padding: 10px;
+      background: rgba(255,255,255,0.92);
+      box-shadow:
+        0 18px 44px rgba(2, 6, 23, 0.32),
+        0 0 0 1px rgba(255,255,255,0.18);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .qr-image:hover {
+      transform: scale(1.025);
+      box-shadow:
+        0 24px 58px rgba(2, 6, 23, 0.42),
+        0 0 0 1px rgba(125, 211, 252, 0.45);
+    }
+
+    details {
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    details:hover,
+    details[open] {
+      transform: translateY(-3px);
+      border-color: rgba(125, 211, 252, 0.34);
+      background: rgba(255, 255, 255, 0.095);
+    }
+
+    summary {
+      list-style-position: outside;
+      line-height: 1.5;
+    }
+
+    footer {
+      position: relative;
+    }
+
+    footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: min(760px, calc(100% - 40px));
+      height: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(125, 211, 252, 0.42), transparent);
+    }
+
+    @media (max-width: 860px) {
+      .container {
+        width: min(100% - 24px, 1210px);
+      }
+
+      header {
+        padding: 10px 0;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      .hero-actions .btn,
+      .copy-row .btn,
+      .copy-row a {
+        width: 100%;
+      }
+
+      .price-card:hover,
+      .step:hover,
+      details:hover,
+      .info-item:hover {
+        transform: none;
+      }
+
+      .bank-box,
+      .panel,
+      .price-card,
+      .hero-card {
+        border-radius: 24px;
+      }
+    }
+
+
     @media (max-width: 1080px) {
       .pricing-grid,
       .steps-grid {
@@ -679,6 +1250,270 @@
         padding: 20px;
       }
     }
+
+
+    /* === EXTRA FUNCTIONS UI: added without changing original content === */
+    .plan-tools {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      margin: 0 0 18px;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(14px);
+    }
+
+    .plan-tools input,
+    .plan-tools select {
+      min-height: 48px;
+    }
+
+    .price-card {
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, opacity 0.22s ease;
+    }
+
+    .price-card.is-selected {
+      border-color: rgba(52, 211, 153, 0.75);
+      box-shadow: 0 24px 70px rgba(52, 211, 153, 0.18), var(--shadow);
+      transform: translateY(-4px);
+    }
+
+    .price-card.is-selected::after {
+      content: "✓";
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(52, 211, 153, 0.22);
+      color: #bbf7d0;
+      border: 1px solid rgba(52, 211, 153, 0.38);
+      font-weight: 900;
+    }
+
+    .price-card.is-hidden-by-filter {
+      display: none;
+    }
+
+    .quantity-tools {
+      display: grid;
+      grid-template-columns: 44px 1fr 44px;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .quantity-btn,
+    .utility-btn {
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.09);
+      color: var(--text);
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .quantity-btn {
+      min-height: 46px;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .quantity-btn:hover,
+    .utility-btn:hover,
+    .copy-bank-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: 0 16px 34px rgba(56, 189, 248, 0.18);
+    }
+
+    .copy-bank-btn {
+      margin-top: 14px;
+      width: 100%;
+    }
+
+    .utility-dock {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      display: grid;
+      gap: 10px;
+      z-index: 60;
+    }
+
+    .utility-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 19px;
+      font-weight: 900;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+    }
+
+    #backToTopBtn {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+    }
+
+    #backToTopBtn.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    #musicToggleBtn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    #musicToggleBtn.is-playing {
+      border-color: rgba(52, 211, 153, 0.7);
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.32), rgba(56, 189, 248, 0.24));
+      color: #bbf7d0;
+      animation: musicPulse 1.35s ease-in-out infinite;
+    }
+
+    #musicToggleBtn.is-playing::after {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border-radius: 14px;
+      border: 1px solid rgba(187, 247, 208, 0.34);
+      animation: musicRing 1.35s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes musicPulse {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-1px) scale(1.04); }
+    }
+
+    @keyframes musicRing {
+      0% { opacity: 0.35; transform: scale(0.82); }
+      70% { opacity: 0; transform: scale(1.18); }
+      100% { opacity: 0; transform: scale(1.18); }
+    }
+
+    .toast-message {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 20px);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 70;
+      max-width: min(520px, calc(100% - 32px));
+      padding: 13px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(52, 211, 153, 0.36);
+      background: rgba(2, 6, 23, 0.88);
+      color: #bbf7d0;
+      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .toast-message.is-visible {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .submit-pulse {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-pulse::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+      transform: translateX(-120%);
+      animation: submitShine 1.1s ease infinite;
+    }
+
+    @keyframes submitShine {
+      to { transform: translateX(120%); }
+    }
+
+    body.light-mode {
+      --bg: #eff6ff;
+      --bg-2: #f8fafc;
+      --card: rgba(255, 255, 255, 0.78);
+      --card-strong: rgba(255, 255, 255, 0.92);
+      --text: #0f172a;
+      --muted: #475569;
+      --border: rgba(15, 23, 42, 0.12);
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.26), transparent 28rem),
+        radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.22), transparent 28rem),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+    }
+
+    body.light-mode header {
+      background: rgba(248, 250, 252, 0.78);
+    }
+
+    body.light-mode .topbar {
+      background: rgba(15, 23, 42, 0.78);
+    }
+
+    body.light-mode .hero-card,
+    body.light-mode .price-card,
+    body.light-mode .panel,
+    body.light-mode .step,
+    body.light-mode details,
+    body.light-mode .plan-tools,
+    body.light-mode .bank-box {
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    body.light-mode input,
+    body.light-mode select,
+    body.light-mode textarea {
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--text);
+    }
+
+    body.light-mode .quick-item,
+    body.light-mode .info-item {
+      background: rgba(15, 23, 42, 0.05);
+    }
+
+    body.light-mode .btn-soft,
+    body.light-mode .quantity-btn,
+    body.light-mode .utility-btn {
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    @media (max-width: 640px) {
+      .plan-tools {
+        grid-template-columns: 1fr;
+      }
+
+      .utility-dock {
+        right: 12px;
+        bottom: 12px;
+      }
+
+      .utility-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 16px;
+      }
+    }
+
   </style>
 </head>
 
@@ -1282,6 +2117,369 @@ successBox.textContent = latestOrderText + status;
     });
 
     updateSummary();
+
+    /* === EXTRA FUNCTIONS: added without changing original content === */
+    function showToast(message) {
+      let toast = document.getElementById("toastMessage");
+
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.id = "toastMessage";
+        toast.className = "toast-message";
+        toast.setAttribute("role", "status");
+        toast.setAttribute("aria-live", "polite");
+        document.body.appendChild(toast);
+      }
+
+      toast.textContent = message;
+      toast.classList.add("is-visible");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => {
+        toast.classList.remove("is-visible");
+      }, 1800);
+    }
+
+    function refreshSelectedPlanState() {
+      document.querySelectorAll(".price-card").forEach((card) => {
+        const button = card.querySelector(".select-plan");
+        const isSelected = button && button.dataset.plan === planSelect.value;
+        card.classList.toggle("is-selected", Boolean(isSelected));
+      });
+    }
+
+    function addPlanTools() {
+      const pricingGrid = document.querySelector(".pricing-grid");
+      if (!pricingGrid || document.getElementById("planSearch")) return;
+
+      const planTools = document.createElement("div");
+      planTools.className = "plan-tools";
+      planTools.innerHTML = `
+        <input id="planSearch" type="search" placeholder="Tìm nhanh gói..." aria-label="Tìm nhanh gói">
+        <select id="planSort" aria-label="Sắp xếp gói">
+          <option value="default">Sắp xếp mặc định</option>
+          <option value="asc">Giá thấp đến cao</option>
+          <option value="desc">Giá cao đến thấp</option>
+        </select>
+      `;
+
+      pricingGrid.parentNode.insertBefore(planTools, pricingGrid);
+
+      const planSearch = document.getElementById("planSearch");
+      const planSort = document.getElementById("planSort");
+      const cards = Array.from(pricingGrid.children);
+
+      function applyPlanTools() {
+        const keyword = planSearch.value.trim().toLowerCase();
+
+        cards.forEach((card) => {
+          const text = card.textContent.toLowerCase();
+          card.classList.toggle("is-hidden-by-filter", keyword && !text.includes(keyword));
+        });
+
+        const sortedCards = [...cards].sort((a, b) => {
+          if (planSort.value === "default") return cards.indexOf(a) - cards.indexOf(b);
+
+          const priceA = Number(a.querySelector(".select-plan")?.dataset.price || 0);
+          const priceB = Number(b.querySelector(".select-plan")?.dataset.price || 0);
+          return planSort.value === "asc" ? priceA - priceB : priceB - priceA;
+        });
+
+        sortedCards.forEach((card) => pricingGrid.appendChild(card));
+      }
+
+      planSearch.addEventListener("input", applyPlanTools);
+      planSort.addEventListener("change", applyPlanTools);
+    }
+
+    function addQuantityStepper() {
+      if (!quantityInput || quantityInput.parentElement.querySelector(".quantity-tools")) return;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "quantity-tools";
+
+      const minusBtn = document.createElement("button");
+      minusBtn.type = "button";
+      minusBtn.className = "quantity-btn";
+      minusBtn.setAttribute("aria-label", "Giảm số lượng");
+      minusBtn.textContent = "−";
+
+      const plusBtn = document.createElement("button");
+      plusBtn.type = "button";
+      plusBtn.className = "quantity-btn";
+      plusBtn.setAttribute("aria-label", "Tăng số lượng");
+      plusBtn.textContent = "+";
+
+      quantityInput.parentNode.insertBefore(wrapper, quantityInput);
+      wrapper.appendChild(minusBtn);
+      wrapper.appendChild(quantityInput);
+      wrapper.appendChild(plusBtn);
+
+      function changeQuantity(step) {
+        const current = Math.max(1, Number(quantityInput.value || 1));
+        quantityInput.value = Math.max(1, current + step);
+        quantityInput.dispatchEvent(new Event("input", { bubbles: true }));
+      }
+
+      minusBtn.addEventListener("click", () => changeQuantity(-1));
+      plusBtn.addEventListener("click", () => changeQuantity(1));
+    }
+
+
+    let musicAudioContext = null;
+    let musicMasterGain = null;
+    let musicTimer = null;
+    let musicStep = 0;
+    const musicMelody = [261.63, 329.63, 392.00, 523.25, 392.00, 329.63, 293.66, 349.23];
+
+    function playMusicNote(frequency) {
+      if (!musicAudioContext || !musicMasterGain) return;
+
+      const now = musicAudioContext.currentTime;
+      const oscillator = musicAudioContext.createOscillator();
+      const noteGain = musicAudioContext.createGain();
+
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(frequency, now);
+
+      noteGain.gain.setValueAtTime(0.0001, now);
+      noteGain.gain.exponentialRampToValueAtTime(0.08, now + 0.03);
+      noteGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.42);
+
+      oscillator.connect(noteGain);
+      noteGain.connect(musicMasterGain);
+
+      oscillator.start(now);
+      oscillator.stop(now + 0.46);
+    }
+
+    async function startBackgroundMusic() {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+
+      if (!AudioContextClass) {
+        showToast("Trình duyệt không hỗ trợ phát nhạc nền");
+        return false;
+      }
+
+      if (!musicAudioContext) {
+        musicAudioContext = new AudioContextClass();
+        musicMasterGain = musicAudioContext.createGain();
+        musicMasterGain.gain.setValueAtTime(0.22, musicAudioContext.currentTime);
+        musicMasterGain.connect(musicAudioContext.destination);
+      }
+
+      if (musicAudioContext.state === "suspended") {
+        await musicAudioContext.resume();
+      }
+
+      if (musicTimer) return true;
+
+      musicStep = 0;
+      playMusicNote(musicMelody[musicStep]);
+
+      musicTimer = window.setInterval(() => {
+        musicStep = (musicStep + 1) % musicMelody.length;
+        playMusicNote(musicMelody[musicStep]);
+      }, 430);
+
+      return true;
+    }
+
+    function stopBackgroundMusic() {
+      if (musicTimer) {
+        window.clearInterval(musicTimer);
+        musicTimer = null;
+      }
+    }
+
+    function updateMusicButton(isPlaying) {
+      const musicToggleBtn = document.getElementById("musicToggleBtn");
+      if (!musicToggleBtn) return;
+
+      musicToggleBtn.classList.toggle("is-playing", Boolean(isPlaying));
+      musicToggleBtn.textContent = isPlaying ? "♫" : "♪";
+      musicToggleBtn.setAttribute("title", isPlaying ? "Tắt nhạc nền" : "Bật nhạc nền");
+      musicToggleBtn.setAttribute("aria-label", isPlaying ? "Tắt nhạc nền" : "Bật nhạc nền");
+    }
+
+    function enableMusicButton() {
+      const musicToggleBtn = document.getElementById("musicToggleBtn");
+      if (!musicToggleBtn) return;
+
+      musicToggleBtn.addEventListener("click", async () => {
+        if (musicTimer) {
+          stopBackgroundMusic();
+          updateMusicButton(false);
+          showToast("Đã tắt nhạc nền");
+          return;
+        }
+
+        const started = await startBackgroundMusic();
+        if (started) {
+          updateMusicButton(true);
+          showToast("Đã bật nhạc nền");
+        }
+      });
+
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden && musicTimer) {
+          stopBackgroundMusic();
+          updateMusicButton(false);
+        }
+      });
+    }
+
+    function addUtilityButtons() {
+      if (document.getElementById("utilityDock")) return;
+
+      const utilityDock = document.createElement("div");
+      utilityDock.id = "utilityDock";
+      utilityDock.className = "utility-dock";
+      utilityDock.innerHTML = `
+        <button type="button" class="utility-btn" id="musicToggleBtn" aria-label="Bật tắt nhạc nền" title="Bật tắt nhạc nền">♪</button>
+        <button type="button" class="utility-btn" id="themeToggleBtn" aria-label="Đổi giao diện sáng tối" title="Đổi giao diện sáng tối">☾</button>
+        <button type="button" class="utility-btn" id="backToTopBtn" aria-label="Lên đầu trang" title="Lên đầu trang">↑</button>
+      `;
+      document.body.appendChild(utilityDock);
+
+      const themeToggleBtn = document.getElementById("themeToggleBtn");
+      const backToTopBtn = document.getElementById("backToTopBtn");
+      const savedTheme = localStorage.getItem("tiemnhaBongTheme");
+
+      enableMusicButton();
+
+      if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+        themeToggleBtn.textContent = "☀";
+      }
+
+      themeToggleBtn.addEventListener("click", () => {
+        const isLight = document.body.classList.toggle("light-mode");
+        localStorage.setItem("tiemnhaBongTheme", isLight ? "light" : "dark");
+        themeToggleBtn.textContent = isLight ? "☀" : "☾";
+      });
+
+      backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      function toggleBackToTop() {
+        backToTopBtn.classList.toggle("is-visible", window.scrollY > 520);
+      }
+
+      window.addEventListener("scroll", toggleBackToTop, { passive: true });
+      toggleBackToTop();
+    }
+
+    function addBankCopyButton() {
+      const bankInfo = document.querySelector(".bank-info");
+      if (!bankInfo || document.getElementById("copyBankBtn")) return;
+
+      const copyBankBtn = document.createElement("button");
+      copyBankBtn.type = "button";
+      copyBankBtn.id = "copyBankBtn";
+      copyBankBtn.className = "btn btn-soft copy-bank-btn";
+      copyBankBtn.textContent = "Copy thông tin thanh toán";
+      bankInfo.appendChild(copyBankBtn);
+
+      copyBankBtn.addEventListener("click", async () => {
+        const paymentInfo = Array.from(bankInfo.querySelectorAll("p"))
+          .map((line) => line.innerText.trim())
+          .join("\n");
+
+        try {
+          await navigator.clipboard.writeText(paymentInfo);
+          showToast("Đã copy thông tin thanh toán");
+        } catch (error) {
+          showToast("Không copy được tự động");
+        }
+      });
+    }
+
+    function enableFormDraft() {
+      const draftKey = "tiemnhaBongOrderDraft";
+      const fields = ["name", "phone", "email", "plan", "quantity", "payment", "note"];
+
+      try {
+        const savedDraft = JSON.parse(localStorage.getItem(draftKey) || "{}");
+        fields.forEach((id) => {
+          const field = document.getElementById(id);
+          if (field && savedDraft[id] && !field.value) {
+            field.value = savedDraft[id];
+          }
+        });
+      } catch (error) {
+        localStorage.removeItem(draftKey);
+      }
+
+      function saveDraft() {
+        const data = {};
+        fields.forEach((id) => {
+          const field = document.getElementById(id);
+          if (field) data[id] = field.value;
+        });
+        localStorage.setItem(draftKey, JSON.stringify(data));
+      }
+
+      fields.forEach((id) => {
+        const field = document.getElementById(id);
+        if (field) {
+          field.addEventListener("input", saveDraft);
+          field.addEventListener("change", saveDraft);
+        }
+      });
+
+      orderForm.addEventListener("submit", () => {
+        saveDraft();
+      });
+    }
+
+    function enableSubmitFeedback() {
+      const submitButton = orderForm.querySelector('button[type="submit"]');
+      if (!submitButton) return;
+
+      orderForm.addEventListener("submit", () => {
+        const phone = phoneInput.value.trim();
+        const phoneIsValid = /^(0|\+84)[0-9\s.-]{8,13}$/.test(phone);
+        if (!phoneIsValid) return;
+
+        submitButton.classList.add("submit-pulse");
+        submitButton.disabled = true;
+
+        window.setTimeout(() => {
+          submitButton.classList.remove("submit-pulse");
+          submitButton.disabled = false;
+        }, 2200);
+      });
+    }
+
+    function enableExtraFeatureListeners() {
+      document.querySelectorAll(".select-plan").forEach((button) => {
+        button.addEventListener("click", () => {
+          refreshSelectedPlanState();
+          showToast("Đã chọn gói");
+        });
+      });
+
+      [planSelect, quantityInput].forEach((field) => {
+        field.addEventListener("input", refreshSelectedPlanState);
+        field.addEventListener("change", refreshSelectedPlanState);
+      });
+    }
+
+    function initExtraFeatures() {
+      addPlanTools();
+      addQuantityStepper();
+      addUtilityButtons();
+      addBankCopyButton();
+      enableFormDraft();
+      enableSubmitFeedback();
+      enableExtraFeatureListeners();
+      updateSummary();
+      refreshSelectedPlanState();
+    }
+
+    initExtraFeatures();
+
   </script>
 </body>
 </html>
