@@ -44,7 +44,7 @@ body.light{--bg:#eaf0f0;--panel:#fff;--surface:#f3f6f6;--text:#202729;--muted:#6
  Trình duyệt không cho nhạc tự phát khi chưa có thao tác người dùng.
  =============================================================== */
 const CONFIG={
- name:'Tên Của Bạn', handle:'@yourname · Creator / Explorer',
+ name:'Văn Trường', handle:'@adminslh · Creator / Explorer',
  bio:'Một góc nhỏ để chia sẻ về bản thân, những điều mình yêu thích và các nơi bạn có thể tìm thấy mình.',
  avatarUrl:'https://cdn.upanhlaylink.com/i/A3SU2PL8.jpg',tags:['Creative','Music lover','Vietnam 🇻🇳'],status:'Online · Rất vui được gặp bạn',
  // DÁN LINK MP3 TRỰC TIẾP VÀO GIỮA HAI DẤU NHÁY BÊN DƯỚI.
@@ -75,7 +75,7 @@ try{
 }catch(err){console.error('Không thể cập nhật thông tin Profile:',err)}
 $('links').addEventListener('click',e=>{const a=e.target.closest('a[data-placeholder]');if(a){e.preventDefault();toast('Bạn hãy điền đường link thật trong phần CONFIG của file HTML.')}});
 // Typing effect
-const name=CONFIG.name||'Tên Của Bạn',nameEl=$('displayName');if(!matchMedia('(prefers-reduced-motion:reduce)').matches){nameEl.textContent='';let pos=0;const typing=setInterval(()=>{nameEl.textContent=name.slice(0,++pos);if(pos>=name.length){clearInterval(typing);setTimeout(()=>nameEl.classList.remove('typing'),650)}},95)}else{nameEl.textContent=name;nameEl.classList.remove('typing')}
+const name=CONFIG.name||'Văn Trường',nameEl=$('displayName');if(!matchMedia('(prefers-reduced-motion:reduce)').matches){nameEl.textContent='';let pos=0;const typing=setInterval(()=>{nameEl.textContent=name.slice(0,++pos);if(pos>=name.length){clearInterval(typing);setTimeout(()=>nameEl.classList.remove('typing'),650)}},95)}else{nameEl.textContent=name;nameEl.classList.remove('typing')}
 // Clock (device time)
 const dtf=new Intl.DateTimeFormat('vi-VN',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});function clock(){ $('clock').textContent=dtf.format(new Date())}clock();setInterval(clock,1000);
 // Theme
