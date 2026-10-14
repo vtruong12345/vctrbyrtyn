@@ -1,88 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="theme-color" content="#16191c" />
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#121619">
 <title>Trang cá nhân | My Space</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:dark;--bg:#15181b;--card:#212528;--line:#3a4045;--text:#f1f4f3;--muted:#a1aaa9;--accent:#a9cbbd}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:25px 14px 29px;background:radial-gradient(ellipse at 50% 44%,#242a2e 0%,#191d20 45%,#111416 100%);font-family:'DM Sans',system-ui,sans-serif;color:var(--text)}
-.profile{width:min(100%,430px);background:linear-gradient(150deg,#24282b,#1e2226);border:1px solid #3d4349;border-radius:19px;padding:24px 23px 28px;box-shadow:0 22px 70px #0005,0 1px 0 #ffffff0b inset}
-.head{display:flex;align-items:center;gap:15px}.avatar{width:68px;height:68px;flex:0 0 68px;border-radius:18px;overflow:hidden;background:#a4c1b5;display:grid;place-items:center}.avatar img{width:100%;height:100%;object-fit:cover}.avatar svg{width:100%;height:100%}.eyebrow{font:800 10px 'Outfit',sans-serif;letter-spacing:1.6px;color:#fff;background:#2454ac;display:inline-block;padding:3px 5px;transform:rotate(-1deg)}h1{font:800 27px/1.2 'Outfit',sans-serif;letter-spacing:-.8px;margin:5px 0 4px}.handle{font-size:11px;color:var(--muted)}.bio{font-size:12px;line-height:1.65;color:#d8dedd;margin:20px 0 15px}.tags{display:flex;gap:7px;flex-wrap:wrap}.tag{font-size:10px;padding:7px 9px;border:1px solid #40474a;border-radius:18px;color:#bec7c5;background:#ffffff06}.section-heading{display:flex;justify-content:space-between;align-items:center;margin:28px 0 12px;color:#939d9e;font-size:10px;font-weight:800;letter-spacing:1.4px}.count{font-size:9px;letter-spacing:0}.links{display:grid;gap:8px}.link{display:flex;align-items:center;gap:12px;min-height:50px;border:1px solid #3c4348;border-radius:12px;padding:8px 12px;color:inherit;text-decoration:none;background:linear-gradient(100deg,#ffffff07,#ffffff03);transition:background .2s,border-color .2s,transform .2s}.link:hover,.link:focus-visible{background:#ffffff12;border-color:#718c84;transform:translateY(-2px);outline:none}.brand-icon{width:31px;height:31px;flex:0 0 31px;border-radius:9px;background:#34403f;display:grid;place-items:center;color:#f3f7f4}.brand-icon svg{width:17px;height:17px;fill:currentColor}.link-copy{flex:1;min-width:0}.link-name{font-size:12px;font-weight:800}.link-desc{color:#99a3a4;font-size:10px;margin-top:2px}.arrow{font-size:16px;color:#a9b4b1}.music-heading{margin-top:27px}.player{display:flex;align-items:center;gap:12px;border:1px solid #41494d;background:#ffffff07;border-radius:12px;padding:11px}.play{appearance:none;border:0;background:var(--accent);color:#25332e;width:31px;height:31px;flex:0 0 31px;border-radius:50%;display:grid;place-items:center;cursor:pointer;font-size:13px}.song{flex:1;min-width:0}.song-name{font-size:11px;font-weight:800}.song-sub{font-size:10px;color:#a5afad;margin:4px 0 8px}.track{height:3px;background:#50575a;border-radius:10px;overflow:hidden}.progress{height:100%;width:0;background:#a8d3c3;transition:width .2s}.music-add{border:1px solid #555c5d;border-radius:7px;background:transparent;color:#f1f4f3;font:700 10px inherit;font-size:10px;padding:8px 9px;cursor:pointer}.music-add:hover{background:#ffffff15}.footer{font-size:10px;color:#788184;margin-top:21px;text-align:center}#audiofile{display:none}@media(max-width:420px){.profile{padding:20px 17px 23px}.avatar{width:62px;height:62px;flex-basis:62px}h1{font-size:25px}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+:root{--accent:#a8d5c3;--bg:#111619;--panel:#22272a;--surface:#2a3033;--text:#f5f8f7;--muted:#a3adad;--border:#3c464a;--shadow:#0008;color-scheme:dark}
+body.light{--bg:#eaf0f0;--panel:#fff;--surface:#f3f6f6;--text:#202729;--muted:#607071;--border:#d5dfe1;--shadow:#6f8a9a33;color-scheme:light}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;transition:background .35s,color .3s;overflow-x:hidden}button,a{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}.glow{position:fixed;width:48vmax;height:48vmax;left:50%;top:42%;transform:translate(-50%,-50%);background:radial-gradient(circle,color-mix(in srgb,var(--accent) 11%,transparent),transparent 68%);pointer-events:none;z-index:0}.layout{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:45px 16px 28px}
+.card{width:min(100%,455px);padding:22px;border-radius:21px;background:linear-gradient(145deg,var(--panel),color-mix(in srgb,var(--panel) 90%,var(--bg)));border:1px solid var(--border);box-shadow:0 24px 75px var(--shadow);backdrop-filter:blur(12px)}.controls{display:flex;align-items:center;justify-content:flex-end;gap:7px;margin-bottom:18px}.tool{border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);min-height:32px;padding:6px 9px;font-size:12px}.tool:hover{border-color:var(--accent)}.color-label{font-size:11px;color:var(--muted)}#colorPicker{border:1px solid var(--border);padding:2px;height:31px;width:39px;border-radius:9px;background:var(--surface);cursor:pointer}
+.intro{display:flex;gap:15px;align-items:center}.avatar-ring{width:78px;height:78px;flex:0 0 78px;padding:3px;border-radius:22px;background:conic-gradient(from 0deg,var(--accent),transparent,var(--accent));animation:spin 6s linear infinite;box-shadow:0 0 23px color-mix(in srgb,var(--accent) 40%,transparent)}.avatar{width:100%;height:100%;border-radius:19px;overflow:hidden;background:#9dbeb0;display:grid;place-items:center}.avatar svg{width:100%;height:100%}.avatar img{width:100%;height:100%;object-fit:cover}.eyebrow{display:inline-block;font-size:9px;font-weight:900;letter-spacing:1.5px;background:#2456af;color:white;padding:4px 6px;transform:rotate(-1deg)}h1{margin:7px 0 4px;font-size:25px;line-height:1.2;letter-spacing:-.7px}.typing::after{content:'|';color:var(--accent);animation:blink .8s infinite}.handle{color:var(--muted);font-size:11px}.status{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:11px;margin:12px 0 0}.dot{width:8px;height:8px;background:#43d28b;border-radius:50%;box-shadow:0 0 8px #43d28b;animation:pulse 2s infinite}.bio{font-size:12px;line-height:1.7;margin:18px 0 15px}.tags{display:flex;gap:7px;flex-wrap:wrap}.tag{font-size:10px;border:1px solid var(--border);border-radius:20px;padding:6px 9px;color:var(--muted)}.meta{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;margin:18px 0 7px}.clock{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}.actions{display:flex;gap:7px;flex-wrap:wrap}.action{border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:11px;border-radius:9px;padding:8px 10px}.action:hover{border-color:var(--accent)}.action:active{transform:scale(.97)}.section-title{display:flex;justify-content:space-between;margin:25px 0 12px;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:1.4px}.links{display:grid;gap:8px}.social{display:flex;align-items:center;gap:11px;padding:10px 11px;min-height:53px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);text-decoration:none;transition:transform .2s,border-color .2s,background .2s}.social:hover{transform:translateY(-2px);border-color:var(--accent);background:color-mix(in srgb,var(--surface) 85%,var(--accent))}.social-icon{width:31px;height:31px;flex:0 0 31px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 15%,var(--surface));border-radius:9px;font-size:16px;font-weight:800}.social-text{flex:1;min-width:0}.social-name{font-size:12px;font-weight:750}.social-desc{font-size:10px;color:var(--muted);margin-top:3px}.social-arrow{font-size:18px;color:var(--muted)}
+.player{border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:12px}.player-main{display:flex;align-items:center;gap:11px}.play{border:none;border-radius:50%;background:var(--accent);color:#17231e;width:36px;height:36px;flex:0 0 36px;font-size:14px}.song-info{min-width:0;flex:1}.song-title{font-size:11px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.song-detail{color:var(--muted);font-size:10px;margin-top:4px}.pick{font-size:10px;color:var(--text);background:transparent;border:1px solid var(--border);border-radius:8px;padding:7px 8px}.pick:hover{border-color:var(--accent)}.visualizer{height:28px;display:flex;align-items:center;gap:3px;margin:10px 0}.bar{width:4px;height:5px;border-radius:3px;background:var(--accent);opacity:.75}.playing .bar{animation:wave var(--dur,.8s) ease-in-out infinite alternate;animation-delay:var(--delay,0s)}.progress-row{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:10px;font-variant-numeric:tabular-nums}#seek{flex:1;min-width:0;accent-color:var(--accent);cursor:pointer}.music-extra{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:9px}.music-extra label{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:10px}#volume{width:95px;accent-color:var(--accent)}.tip{font-size:10px;color:var(--muted);line-height:1.5}.heart-count{font-size:11px;color:var(--muted);text-align:center;padding-top:13px}.heart{color:#ff758f}.foot{font-size:10px;color:var(--muted);margin-top:20px;text-align:center}#toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,24px);opacity:0;pointer-events:none;z-index:15;max-width:min(90vw,420px);padding:12px 17px;border:1px solid var(--border);background:var(--panel);color:var(--text);border-radius:12px;box-shadow:0 10px 40px var(--shadow);font-size:12px;text-align:center;transition:.25s}#toast.show{opacity:1;transform:translate(-50%,0)}.welcome{position:fixed;inset:0;z-index:20;background:#090d0dcc;display:grid;place-items:center;padding:20px}.welcome[hidden]{display:none}.welcome-box{width:min(100%,345px);border-radius:18px;background:var(--panel);border:1px solid var(--border);padding:25px;text-align:center;box-shadow:0 20px 80px #0007}.welcome-box h2{margin:8px 0;font-size:21px}.welcome-box p{font-size:12px;line-height:1.7;color:var(--muted)}.welcome-box button{background:var(--accent);color:#14221c;border:0;border-radius:10px;padding:11px 18px;font-weight:800}#musicFile{display:none}@keyframes spin{to{transform:rotate(360deg)}}@keyframes blink{50%{opacity:0}}@keyframes pulse{50%{box-shadow:0 0 15px #43d28b}}@keyframes wave{to{height:26px}}@media(max-width:430px){.card{padding:17px}.intro{gap:11px}.avatar-ring{height:65px;width:65px;flex-basis:65px}h1{font-size:22px}.eyebrow{font-size:8px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<main class="profile">
-<header class="head">
-  <div class="avatar" id="avatar">
-    <svg viewBox="0 0 80 80" aria-label="Ảnh đại diện mặc định" role="https://cdn.upanhlaylink.com/i/A3SU2PL8.jpg"><circle fill="#edf6f0" cx="40" cy="27" r="13"/><path fill="#edf6f0" d="M15 77c0-17 9-27 25-27s25 10 25 27"/></svg>
-  </div>
-  <div><span class="eyebrow">WELCOME TO MY SPACE</span><h1 id="displayName">Tên Của Bạn</h1><div class="handle" id="handle">@adminslh · Creator / Explorer</div></div>
-</header>
+<canvas id="stars" aria-hidden="true"></canvas><div class="glow" aria-hidden="true"></div>
+<div class="layout"><main class="card">
+<div class="controls"><span class="color-label">Màu chủ đề</span><input id="colorPicker" type="color" value="#a8d5c3" aria-label="Đổi màu chủ đề"><button class="tool" id="modeBtn" type="button" aria-label="Đổi giao diện sáng tối">☾ Tối</button></div>
+<div class="intro"><div class="avatar-ring"><div class="avatar" id="avatar"><svg viewBox="0 0 80 80" role="img" aria-label="Ảnh đại diện mặc định"><circle cx="40" cy="27" r="13" fill="#edf7f0"/><path d="M15 77c0-17 9-27 25-27s25 10 25 27" fill="#edf7f0"/></svg></div></div><div><span class="eyebrow">WELCOME TO MY SPACE</span><h1 class="typing" id="displayName" aria-label="Tên Của Bạn">Tên Của Bạn</h1><div class="handle" id="handle">@yourname · Creator / Explorer</div></div></div>
+<div class="status"><span class="dot"></span><span id="statusText">Online · Rất vui được gặp bạn</span></div>
 <p class="bio" id="bio">Một góc nhỏ để chia sẻ về bản thân, những điều mình yêu thích và các nơi bạn có thể tìm thấy mình.</p>
-<div class="tags"><span class="tag">Creative</span><span class="tag">Music lover</span><span class="tag">Vietnam 🇻🇳</span></div>
-<div class="section-heading"><span>CONNECT WITH ME</span><span class="count">09 LINKS</span></div>
-<nav class="links" aria-label="Liên kết mạng xã hội" id="links"></nav>
-<div class="section-heading music-heading"><span>NOW PLAYING</span><span aria-hidden="true">♫</span></div>
-<div class="player">
-  <button class="play" id="playBtn" aria-label="Phát hoặc tạm dừng nhạc">▶</button>
-  <div class="song"><div class="song-name" id="songName">Chọn một bản nhạc</div><div class="song-sub" id="songSub">Bạn có thể tải nhạc từ thiết bị</div><div class="track"><div class="progress" id="progress"></div></div></div>
-  <button class="music-add" id="selectMusic">+ Nhạc</button>
-  <input type="file" id="audiofile" accept="audio/*" aria-label="Chọn tập tin âm thanh" />
-</div>
-<audio id="audio" preload="metadata"></audio>
-</main>
-<footer class="footer">Made with ♥ and a little bit of music</footer>
+<div class="tags" id="tags"><span class="tag">Creative</span><span class="tag">Music lover</span><span class="tag">Vietnam 🇻🇳</span></div>
+<div class="meta"><span class="clock" id="clock">--:--:--</span><div class="actions"><button type="button" class="action" id="copyBtn">⧉ Sao chép link</button><button type="button" class="action" id="shareBtn">↗ Chia sẻ</button><button type="button" class="action" id="heartBtn">♡ Thả tim</button></div></div>
+<div class="section-title"><span>CONNECT WITH ME</span><span id="linkCount">09 LINKS</span></div>
+<nav class="links" id="links" aria-label="Liên kết mạng xã hội">
+<a class="social" href="#" data-placeholder="1"><span class="social-icon">f</span><span class="social-text"><span class="social-name">Facebook</span><span class="social-desc">Kết nối cùng mình</span></span><span class="social-arrow">↗</span></a>
+<a class="social" href="#" data-placeholder="1"><span class="social-icon">◎</span><span class="social-text"><span class="social-name">Instagram</span><span class="social-desc">Những khoảnh khắc nhỏ</span></span><span class="social-arrow">↗</span></a>
+<a class="social" href="#" data-placeholder="1"><span class="social-icon">♪</span><span class="social-text"><span class="social-name">TikTok</span><span class="social-desc">Video thú vị</span></span><span class="social-arrow">↗</span></a>
+<a class="social" href="#" data-placeholder="1"><span class="social-icon">▶</span><span class="social-text"><span class="social-name">YouTube</span><span class="social-desc">Video mới nhất</span></span><span class="social-arrow">↗</span></a>
+<a class="social" href="#" data-placeholder="1"><span class="social-icon">⌘</span><span class="social-text"><span class="social-name">GitHub</span><span class="social-desc">Dự án và mã nguồn</span></span><span class="social-arrow">↗</span></a>
+<a class="social" href="#" data-placeholder="1"><span class="social-icon">☏</span><span class="social-text"><span class="social-name">Discord</span><span class="social-desc">Cộng đồng của mình</span></span><span class="social-arrow">↗</span></a>
+<a class="social" href="#" data-placeholder="1"><span class="social-icon">➤</span><span class="social-text"><span class="social-name">Telegram</span><span class="social-desc">Nhắn tin trực tiếp</span></span><span class="social-arrow">↗</span></a>
+<a class="social" href="mailto:hello@example.com"><span class="social-icon">✉</span><span class="social-text"><span class="social-name">Email</span><span class="social-desc">Liên hệ công việc</span></span><span class="social-arrow">↗</span></a>
+<a class="social" href="#" data-placeholder="1"><span class="social-icon">🔗</span><span class="social-text"><span class="social-name">Website riêng</span><span class="social-desc">Ghé thăm website</span></span><span class="social-arrow">↗</span></a>
+</nav>
+<div class="section-title"><span>NOW PLAYING</span><span>♫</span></div>
+<section class="player" aria-label="Trình phát nhạc"><div class="player-main"><button class="play" type="button" id="playBtn" aria-label="Phát nhạc">▶</button><div class="song-info"><div class="song-title" id="songTitle">Chưa chọn bản nhạc</div><div class="song-detail" id="songDetail">Chọn file nhạc hoặc cấu hình musicUrl</div></div><button class="pick" id="pickBtn" type="button">+ Nhạc</button><input id="musicFile" type="file" accept="audio/*"></div><div class="visualizer" id="visualizer" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><div class="progress-row"><span id="elapsed">0:00</span><input id="seek" type="range" min="0" max="100" value="0" aria-label="Tua nhạc"><span id="duration">0:00</span></div><div class="music-extra"><label>Âm lượng <input id="volume" type="range" min="0" max="100" value="70" aria-label="Âm lượng"></label><span class="tip">Nhạc chỉ phát sau khi bạn tương tác</span></div></section>
+<audio id="audio" preload="metadata"></audio><div class="heart-count"><span class="heart">♥</span> <span id="heartCount">0</span> lượt yêu thích trên thiết bị này</div>
+</main><footer class="foot">Made with ♥ and a little bit of music</footer></div>
+<div class="welcome" id="welcome" hidden><div class="welcome-box"><div style="font-size:35px">✨</div><h2>Chào mừng đến với My Space!</h2><p>Cảm ơn bạn đã ghé thăm góc nhỏ của mình. Chúc bạn một ngày thật vui!</p><button id="welcomeOk" type="button">Khám phá ngay</button></div></div><div id="toast" role="status" aria-live="polite"></div>
 <script>
-/* =============== TÙY CHỈNH TRANG CÁ NHÂN TẠI ĐÂY ===============
-   Sửa các giá trị bên dưới, sau đó lưu file và tải lại trình duyệt.
-   avatarUrl: thay bằng đường dẫn ảnh công khai hoặc tên file ảnh cùng thư mục.
-   url: thay dấu # bằng liên kết trang cá nhân của bạn.
-*/
-const config = {
-  name: 'Tên Của Bạn',
-  handle: '@yourname · Creator / Explorer',
-  bio: 'Một góc nhỏ để chia sẻ về bản thân, những điều mình yêu thích và các nơi bạn có thể tìm thấy mình.',
-  avatarUrl: '',
-  links: [
-    {type:'facebook', name:'Facebook', desc:'Kết nối cùng mình',https://www.facebook.com/vantruonggg.08:'#'},
-    {type:'instagram',name:'Instagram',desc:'Những khoảnh khắc nhỏ',url:'#'},
-    {type:'tiktok',name:'TikTok',desc:'Video & những điều thú vị',url:'#'},
-    {type:'youtube',name:'YouTube',desc:'Video mới nhất',url:'#'},
-    {type:'github',name:'GitHub',desc:'Dự án và mã nguồn',url:'#'},
-    {type:'discord',name:'Discord',desc:'Cộng đồng của mình',url:'#'},
-    {type:'telegram',name:'Telegram',desc:'Nhắn tin trực tiếp',url:'#'},
-    {type:'email',name:'Email',desc:'Liên hệ công việc',url:'mailto:hello@example.com'},
-    {type:'website',name:'Website riêng',desc:'Ghé thăm website',url:'#'}
-  ]
+/* ============== CHỈNH THÔNG TIN CÁ NHÂN TẠI ĐÂY ==============
+ Thay các url '#' bằng link thật. avatarUrl: URL hình hoặc 'avatar.jpg'.
+ musicUrl: 'nhac.mp3' (đặt nhac.mp3 cùng thư mục index.html) hoặc URL MP3 công khai.
+ Trình duyệt không cho nhạc tự phát khi chưa có thao tác người dùng.
+ =============================================================== */
+const CONFIG={
+ name:'Tên Của Bạn', handle:'@yourname · Creator / Explorer',
+ bio:'Một góc nhỏ để chia sẻ về bản thân, những điều mình yêu thích và các nơi bạn có thể tìm thấy mình.',
+ avatarUrl:'',tags:['Creative','Music lover','Vietnam 🇻🇳'],status:'Online · Rất vui được gặp bạn',
+ musicUrl:'',musicTitle:'Bản nhạc yêu thích',
+ links:[
+ {icon:'f',name:'Facebook',desc:'Kết nối cùng mình',url:'#'},
+ {icon:'◎',name:'Instagram',desc:'Những khoảnh khắc nhỏ',url:'#'},
+ {icon:'♪',name:'TikTok',desc:'Video và điều thú vị',url:'#'},
+ {icon:'▶',name:'YouTube',desc:'Video mới nhất',url:'#'},
+ {icon:'⌘',name:'GitHub',desc:'Dự án và mã nguồn',url:'#'},
+ {icon:'☏',name:'Discord',desc:'Cộng đồng của mình',url:'#'},
+ {icon:'➤',name:'Telegram',desc:'Nhắn tin trực tiếp',url:'#'},
+ {icon:'✉',name:'Email',desc:'Liên hệ công việc',url:'mailto:hello@example.com'},
+ {icon:'🔗',name:'Website riêng',desc:'Ghé thăm website',url:'#'}]
 };
-/* =============================================================== */
-const icons = {
-facebook:'<path d="M13.3 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.5 1.6-1.5h1.7V3.6a23 23 0 0 0-2.5-.1c-2.5 0-4.2 1.5-4.2 4.3v2.1H7.2V13h2.7v8z"/>',
-instagram:'<rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.1"/>',
-tiktok:'<path d="M15.5 3c.2 2.6 1.6 4.1 4.2 4.3v3a8.4 8.4 0 0 1-4.2-1.2v6.3a6 6 0 1 1-6-6h.7v3a2.9 2.9 0 1 0 2.3 2.8V3z"/>',
-youtube:'<rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 6 3-6 3z" fill="#34403f"/>',
-github:'<path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.9.6-3.5-1.2-3.5-1.2-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1 .1 1.6 1 1.6 1 1 .5 2.1.4 2.7.2.1-.7.4-1.2.7-1.5-2.3-.3-4.7-1.1-4.7-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.5 9.5 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .4.9.4 1.8.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.7 5 .4.4.7 1 .7 2v3c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/>',
-discord:'<path d="M19.6 5.5A17 17 0 0 0 15.4 4l-.5 1c-1.9-.3-3.9-.3-5.8 0l-.5-1a17 17 0 0 0-4.2 1.5C1.7 9.5 1 13.3 1.4 17c1.6 1.2 3.2 2 5.1 2.5l1.1-1.8-1.7-.8.4-.3c3.6 1.6 7.8 1.6 11.4 0l.4.3-1.7.8 1.1 1.8a17 17 0 0 0 5.1-2.5c.5-4.3-.8-8.1-3-11.5zM8.5 14.6c-.9 0-1.6-.8-1.6-1.8S7.6 11 8.5 11s1.6.8 1.6 1.8-.7 1.8-1.6 1.8zm7 0c-.9 0-1.6-.8-1.6-1.8s.7-1.8 1.6-1.8 1.6.8 1.6 1.8-.7 1.8-1.6 1.8z"/>',
-telegram:'<path d="m21.5 3.5-3.2 16c-.2 1.1-.8 1.3-1.7.8l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.3L5.8 13 1 11.5c-1-.3-1-1 .2-1.5l18.7-7.2c.9-.3 1.7.2 1.6.7z"/>',
-email:'<rect x="2" y="5" width="20" height="14" rx="3"/><path d="m3.5 7 8.5 6 8.5-6" fill="none" stroke="#34403f" stroke-width="1.5"/>',
-website:'<path d="M9.9 7H8a5 5 0 0 0 0 10h3v-2H8a3 3 0 0 1 0-6h2zm4.2 0H16a5 5 0 0 1 0 10h-3v-2h3a3 3 0 0 0 0-6h-2zM8 11h8v2H8z"/>'
-};
-const $=id=>document.getElementById(id);
-$('displayName').textContent=config.name;$('handle').textContent=config.handle;$('bio').textContent=config.bio;
-if(config.avatarUrl){const pic=document.createElement('img');pic.src=config.avatarUrl;pic.alt='Ảnh đại diện';pic.onerror=()=>pic.remove();$('avatar').replaceChildren(pic)}
-const nav=$('links');
-for(const link of config.links){const a=document.createElement('a');a.className='link';a.href=link.url||'#';if(/^https?:\/\//i.test(a.href)){a.target='_blank';a.rel='noopener noreferrer'};if(a.getAttribute('href')==='#')a.addEventListener('click',e=>{e.preventDefault();alert('Hãy thay liên kết này trong phần config của file HTML!')});const ic=document.createElement('span');ic.className='brand-icon';ic.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+(icons[link.type]||icons.website)+'</svg>';const copy=document.createElement('span');copy.className='link-copy';const title=document.createElement('div');title.className='link-name';title.textContent=link.name;const desc=document.createElement('div');desc.className='link-desc';desc.textContent=link.desc;copy.append(title,desc);const arrow=document.createElement('span');arrow.className='arrow';arrow.textContent='↗';a.append(ic,copy,arrow);nav.append(a)}
-document.querySelector('.count').textContent=String(config.links.length).padStart(2,'0')+' LINKS';
-const audio=$('audio'),btn=$('playBtn');let objectUrl=null;
-$('selectMusic').addEventListener('click',()=>$('audiofile').click());
-$('audiofile').addEventListener('change',e=>{const file=e.target.files[0];if(!file)return;if(objectUrl)URL.revokeObjectURL(objectUrl);objectUrl=URL.createObjectURL(file);audio.src=objectUrl;$('songName').textContent=file.name.replace(/\.[^.]+$/,'');$('songSub').textContent='Nhạc từ thiết bị của bạn';audio.play().catch(()=>{});});
-btn.addEventListener('click',()=>{if(!audio.src){$('audiofile').click();return}if(audio.paused)audio.play().catch(()=>{});else audio.pause()});
-audio.addEventListener('play',()=>{btn.textContent='❚❚';btn.setAttribute('aria-label','Tạm dừng')});audio.addEventListener('pause',()=>{btn.textContent='▶';btn.setAttribute('aria-label','Phát nhạc')});audio.addEventListener('timeupdate',()=>{$('progress').style.width=audio.duration?Math.min(100,100*audio.currentTime/audio.duration)+'%':'0%'});audio.addEventListener('ended',()=>{$('progress').style.width='0%'});
+const $=id=>document.getElementById(id);let toastTimer;
+function toast(message){$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2800)}
+// Danh sách liên kết có sẵn trong HTML ngay cả khi JavaScript bị chặn.
+try{
+ $('handle').textContent=CONFIG.handle;$('bio').textContent=CONFIG.bio;$('statusText').textContent=CONFIG.status;
+ $('tags').replaceChildren(...CONFIG.tags.map(x=>{const el=document.createElement('span');el.className='tag';el.textContent=x;return el}));
+ if(CONFIG.avatarUrl){let img=new Image();img.alt='Ảnh đại diện';img.src=CONFIG.avatarUrl;img.onload=()=>$('avatar').replaceChildren(img);img.onerror=()=>toast('Không tải được avatar; kiểm tra đường dẫn ảnh')}
+ $('links').replaceChildren(...CONFIG.links.map(item=>{let a=document.createElement('a');a.className='social';let url=String(item.url||'#');if(!/^(https?:\/\/|mailto:|tel:)/i.test(url))url='#';a.href=url;if(url==='#')a.dataset.placeholder='1';if(url.startsWith('http')){a.target='_blank';a.rel='noopener noreferrer'};let ic=document.createElement('span');ic.className='social-icon';ic.textContent=item.icon||'🔗';let info=document.createElement('span');info.className='social-text';let name=document.createElement('div');name.className='social-name';name.textContent=item.name;let desc=document.createElement('div');desc.className='social-desc';desc.textContent=item.desc;info.append(name,desc);let arrow=document.createElement('span');arrow.className='social-arrow';arrow.textContent='↗';a.append(ic,info,arrow);return a}));
+ $('linkCount').textContent=String(CONFIG.links.length).padStart(2,'0')+' LINKS';
+}catch(err){console.error('Không thể cập nhật thông tin Profile:',err)}
+$('links').addEventListener('click',e=>{const a=e.target.closest('a[data-placeholder]');if(a){e.preventDefault();toast('Bạn hãy điền đường link thật trong phần CONFIG của file HTML.')}});
+// Typing effect
+const name=CONFIG.name||'Tên Của Bạn',nameEl=$('displayName');if(!matchMedia('(prefers-reduced-motion:reduce)').matches){nameEl.textContent='';let pos=0;const typing=setInterval(()=>{nameEl.textContent=name.slice(0,++pos);if(pos>=name.length){clearInterval(typing);setTimeout(()=>nameEl.classList.remove('typing'),650)}},95)}else{nameEl.textContent=name;nameEl.classList.remove('typing')}
+// Clock (device time)
+const dtf=new Intl.DateTimeFormat('vi-VN',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});function clock(){ $('clock').textContent=dtf.format(new Date())}clock();setInterval(clock,1000);
+// Theme
+const themeKey='myspace-theme',accentKey='myspace-accent';function setTheme(light){document.body.classList.toggle('light',light);$('modeBtn').textContent=light?'☀ Sáng':'☾ Tối';localStorage.setItem(themeKey,light?'light':'dark')}setTheme(localStorage.getItem(themeKey)==='light');$('modeBtn').addEventListener('click',()=>setTheme(!document.body.classList.contains('light')));
+function setAccent(color){if(!/^#[0-9a-fA-F]{6}$/.test(color))return;document.documentElement.style.setProperty('--accent',color);$('colorPicker').value=color;localStorage.setItem(accentKey,color)}setAccent(localStorage.getItem(accentKey)||'#a8d5c3');$('colorPicker').addEventListener('input',e=>setAccent(e.target.value));
+// Copy and share; Web Share / Clipboard require supported browser/security context.
+async function copyLink(){try{await navigator.clipboard.writeText(location.href);toast('Đã sao chép liên kết trang cá nhân!')}catch(e){const input=document.createElement('textarea');input.value=location.href;document.body.append(input);input.select();const ok=document.execCommand('copy');input.remove();toast(ok?'Đã sao chép liên kết!':'Không thể sao chép tự động. Hãy sao chép thanh địa chỉ.')}}
+$('copyBtn').addEventListener('click',copyLink);$('shareBtn').addEventListener('click',async()=>{if(navigator.share){try{await navigator.share({title:document.title,url:location.href})}catch(e){if(e.name!=='AbortError')copyLink()}}else copyLink()});
+// Hearts are per browser/device, not a global site counter.
+const heartKey='myspace-hearts';let hearts=Number(localStorage.getItem(heartKey))||0;$('heartCount').textContent=hearts;$('heartBtn').addEventListener('click',()=>{hearts++;localStorage.setItem(heartKey,String(hearts));$('heartCount').textContent=hearts;$('heartBtn').textContent='♥ Đã thả tim';toast('Cảm ơn bạn đã thả tim! ♥')});
+// Welcome once per browser session
+if(!sessionStorage.getItem('myspace-welcomed'))$('welcome').hidden=false;$('welcomeOk').addEventListener('click',()=>{$('welcome').hidden=true;sessionStorage.setItem('myspace-welcomed','yes')});
+// Background music and local file selection
+const audio=$('audio');audio.volume=.7;let objectURL='';function loadSong(url,title){audio.src=url;$('songTitle').textContent=title;$('songDetail').textContent='Sẵn sàng phát nhạc';$('seek').value=0}if(CONFIG.musicUrl)loadSong(CONFIG.musicUrl,CONFIG.musicTitle);
+$('pickBtn').addEventListener('click',()=>$('musicFile').click());$('musicFile').addEventListener('change',e=>{const file=e.target.files&&e.target.files[0];if(!file)return;if(objectURL)URL.revokeObjectURL(objectURL);objectURL=URL.createObjectURL(file);loadSong(objectURL,file.name.replace(/\.[^.]+$/,''));audio.play().catch(()=>toast('Nhấn ▶ để phát nhạc'))});
+$('playBtn').addEventListener('click',async()=>{if(!audio.getAttribute('src')){$('musicFile').click();return}if(audio.paused){try{await audio.play()}catch(e){toast('Không thể phát: kiểm tra đường dẫn hoặc định dạng nhạc')}}else audio.pause()});
+function musicState(){const playing=!audio.paused;$('playBtn').textContent=playing?'❚❚':'▶';$('playBtn').setAttribute('aria-label',playing?'Tạm dừng nhạc':'Phát nhạc');$('visualizer').classList.toggle('playing',playing)}audio.addEventListener('play',musicState);audio.addEventListener('pause',musicState);audio.addEventListener('ended',musicState);
+for(const [i,b] of [...$('visualizer').children].entries()){b.style.setProperty('--delay',(-i*.11)+'s');b.style.setProperty('--dur',(.5+(i%6)*.16)+'s')}
+const fmt=n=>Number.isFinite(n)?Math.floor(n/60)+':'+String(Math.floor(n%60)).padStart(2,'0'):'0:00';audio.addEventListener('timeupdate',()=>{$('elapsed').textContent=fmt(audio.currentTime);if(Number.isFinite(audio.duration)&&audio.duration>0)$('seek').value=String(audio.currentTime/audio.duration*100)});audio.addEventListener('loadedmetadata',()=>{$('duration').textContent=fmt(audio.duration)});audio.addEventListener('error',()=>{if(audio.getAttribute('src'))toast('Lỗi nhạc: không tải được file. Hãy kiểm tra musicUrl.')});$('seek').addEventListener('input',e=>{if(Number.isFinite(audio.duration))audio.currentTime=(Number(e.target.value)/100)*audio.duration});$('volume').addEventListener('input',e=>audio.volume=Number(e.target.value)/100);
+// Animated ambient particles (capped and reduced-motion aware)
+(function(){const canvas=$('stars'),ctx=canvas.getContext('2d');if(!ctx||matchMedia('(prefers-reduced-motion:reduce)').matches)return;let w,h,dots=[];function resize(){const ratio=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;canvas.width=Math.round(w*ratio);canvas.height=Math.round(h*ratio);ctx.setTransform(ratio,0,0,ratio,0,0);dots=Array.from({length:Math.min(85,Math.round(w*h/15000))},()=>({x:Math.random()*w,y:Math.random()*h,r:.5+Math.random()*1.3,s:.13+Math.random()*.35,a:.12+Math.random()*.25}))}addEventListener('resize',resize,{passive:true});resize();function frame(){ctx.clearRect(0,0,w,h);ctx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#a8d5c3';for(const p of dots){ctx.globalAlpha=p.a;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();p.y-=p.s;if(p.y<0){p.y=h;p.x=Math.random()*w}}ctx.globalAlpha=1;requestAnimationFrame(frame)}frame()})();
 </script>
 </body>
 </html>
