@@ -51,16 +51,17 @@ const CONFIG={
  // Ví dụ: 'https://example.com/music.mp3' hoặc 'nhac.mp3' cùng thư mục.
  musicUrl:'',
  musicTitle:'Bản nhạc yêu thích',
- links:[
- {icon:'🔗',name:'Website',desc:'Trang web của mình',url:'#'},
- {icon:'f',name:'Facebook',desc:'Kết nối Facebook',url:'#'},
- {icon:'Z',name:'Zalo',desc:'Nhắn tin qua Zalo',url:'#'},
- {icon:'♪',name:'TikTok',desc:'Video TikTok',url:'#'},
- {icon:'▶',name:'YouTube',desc:'Kênh YouTube',url:'#'},
- {icon:'➤',name:'Telegram',desc:'Liên hệ Telegram',url:'#'},
- {icon:'Z1',name:'Box Zalo 1',desc:'Tham gia nhóm Zalo 1',url:'#'},
- {icon:'Z2',name:'Box Zalo 2',desc:'Tham gia nhóm Zalo 2',url:'#'}
- ]
+ 
+links:[
+  {icon:'◎',name:'Website',desc:'Trang web của mình',url:'https://sublikehub.com/'},
+  {icon:'f',name:'Facebook',desc:'Kết nối Facebook',url:'https://www.facebook.com/vantruonggg.08'},
+  {icon:'Z',name:'Zalo',desc:'Nhắn tin qua Zalo',url:'https://zalo.me/0981251350'},
+  {icon:'♪',name:'TikTok',desc:'Video TikTok',url:'https://www.tiktok.com/@vantruongnene_11?is_from_webapp=1&sender_device=pc'},
+  {icon:'▶',name:'YouTube',desc:'Kênh YouTube',url:'http://www.youtube.com/@SubLikeHubCh%E1%BA%A5mCom'},
+  {icon:'➤',name:'Telegram',desc:'Liên hệ Telegram',url:'https://t.me/admSubLikeHub'},
+  {icon:'Z1',name:'Box Zalo 1',desc:'Thông báo khuyến mãi website',url:'https://zalo.me/g/rcngfz476'},
+  {icon:'Z2',name:'Box Zalo 2',desc:'Mua bán tài khoản Premium',url:'https://zalo.me/g/vzj45bc9lqytqbrz65gk'}
+]
 };
 const $=id=>document.getElementById(id);let toastTimer;
 function toast(message){$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2800)}
