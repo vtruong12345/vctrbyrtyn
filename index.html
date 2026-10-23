@@ -1,115 +1,303 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#121619">
-<title>Trang cá nhân | My Space</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tiem Nha Bong | Cửa hàng gói ứng dụng</title>
 <style>
-:root{--accent:#a8d5c3;--bg:#111619;--panel:#22272a;--surface:#2a3033;--text:#f5f8f7;--muted:#a3adad;--border:#3c464a;--shadow:#0008;color-scheme:dark}
-body.light{--bg:#eaf0f0;--panel:#fff;--surface:#f3f6f6;--text:#202729;--muted:#607071;--border:#d5dfe1;--shadow:#6f8a9a33;color-scheme:light}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;transition:background .35s,color .3s;overflow-x:hidden}button,a{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}.glow{position:fixed;width:48vmax;height:48vmax;left:50%;top:42%;transform:translate(-50%,-50%);background:radial-gradient(circle,color-mix(in srgb,var(--accent) 11%,transparent),transparent 68%);pointer-events:none;z-index:0}.layout{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:45px 16px 28px}
-.card{width:min(100%,455px);padding:22px;border-radius:21px;background:linear-gradient(145deg,var(--panel),color-mix(in srgb,var(--panel) 90%,var(--bg)));border:1px solid var(--border);box-shadow:0 24px 75px var(--shadow);backdrop-filter:blur(12px)}.controls{display:flex;align-items:center;justify-content:flex-end;gap:7px;margin-bottom:18px}.tool{border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);min-height:32px;padding:6px 9px;font-size:12px}.tool:hover{border-color:var(--accent)}.color-label{font-size:11px;color:var(--muted)}#colorPicker{border:1px solid var(--border);padding:2px;height:31px;width:39px;border-radius:9px;background:var(--surface);cursor:pointer}
-.intro{display:flex;gap:15px;align-items:center}.avatar-ring{width:78px;height:78px;flex:0 0 78px;padding:3px;border-radius:22px;background:conic-gradient(from 0deg,var(--accent),transparent,var(--accent));animation:spin 6s linear infinite;box-shadow:0 0 23px color-mix(in srgb,var(--accent) 40%,transparent)}.avatar{width:100%;height:100%;border-radius:19px;overflow:hidden;background:#9dbeb0;display:grid;place-items:center}.avatar svg{width:100%;height:100%}.avatar img{width:100%;height:100%;object-fit:cover}.eyebrow{display:inline-block;font-size:9px;font-weight:900;letter-spacing:1.5px;background:#2456af;color:white;padding:4px 6px;transform:rotate(-1deg)}h1{margin:7px 0 4px;font-size:25px;line-height:1.2;letter-spacing:-.7px}.typing::after{content:'|';color:var(--accent);animation:blink .8s infinite}.handle{color:var(--muted);font-size:11px}.status{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:11px;margin:12px 0 0}.dot{width:8px;height:8px;background:#43d28b;border-radius:50%;box-shadow:0 0 8px #43d28b;animation:pulse 2s infinite}.bio{font-size:12px;line-height:1.7;margin:18px 0 15px}.tags{display:flex;gap:7px;flex-wrap:wrap}.tag{font-size:10px;border:1px solid var(--border);border-radius:20px;padding:6px 9px;color:var(--muted)}.meta{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;margin:18px 0 7px}.clock{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}.actions{display:flex;gap:7px;flex-wrap:wrap}.action{border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:11px;border-radius:9px;padding:8px 10px}.action:hover{border-color:var(--accent)}.action:active{transform:scale(.97)}.section-title{display:flex;justify-content:space-between;margin:25px 0 12px;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:1.4px}.links{display:grid;gap:8px}.social{display:flex;align-items:center;gap:11px;padding:10px 11px;min-height:53px;border:1px solid var(--border);border-radius:12px;background:var(--surface);color:var(--text);text-decoration:none;transition:transform .2s,border-color .2s,background .2s}.social:hover{transform:translateY(-2px);border-color:var(--accent);background:color-mix(in srgb,var(--surface) 85%,var(--accent))}.social-icon{width:31px;height:31px;flex:0 0 31px;display:grid;place-items:center;background:color-mix(in srgb,var(--accent) 15%,var(--surface));border-radius:9px;font-size:16px;font-weight:800}.social-text{flex:1;min-width:0}.social-name{font-size:12px;font-weight:750}.social-desc{font-size:10px;color:var(--muted);margin-top:3px}.social-arrow{font-size:18px;color:var(--muted)}
-.player{border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:12px}.player-main{display:flex;align-items:center;gap:11px}.play{border:none;border-radius:50%;background:var(--accent);color:#17231e;width:36px;height:36px;flex:0 0 36px;font-size:14px}.song-info{min-width:0;flex:1}.song-title{font-size:11px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.song-detail{color:var(--muted);font-size:10px;margin-top:4px}.visualizer{height:28px;display:flex;align-items:center;gap:3px;margin:10px 0}.bar{width:4px;height:5px;border-radius:3px;background:var(--accent);opacity:.75}.playing .bar{animation:wave var(--dur,.8s) ease-in-out infinite alternate;animation-delay:var(--delay,0s)}.progress-row{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:10px;font-variant-numeric:tabular-nums}#seek{flex:1;min-width:0;accent-color:var(--accent);cursor:pointer}.music-extra{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:9px}.music-extra label{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:10px}#volume{width:95px;accent-color:var(--accent)}.tip{font-size:10px;color:var(--muted);line-height:1.5}.heart-count{font-size:11px;color:var(--muted);text-align:center;padding-top:13px}.heart{color:#ff758f}.foot{font-size:10px;color:var(--muted);margin-top:20px;text-align:center}#toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,24px);opacity:0;pointer-events:none;z-index:15;max-width:min(90vw,420px);padding:12px 17px;border:1px solid var(--border);background:var(--panel);color:var(--text);border-radius:12px;box-shadow:0 10px 40px var(--shadow);font-size:12px;text-align:center;transition:.25s}#toast.show{opacity:1;transform:translate(-50%,0)}.welcome{position:fixed;inset:0;z-index:20;background:#090d0dcc;display:grid;place-items:center;padding:20px}.welcome[hidden]{display:none}.welcome-box{width:min(100%,345px);border-radius:18px;background:var(--panel);border:1px solid var(--border);padding:25px;text-align:center;box-shadow:0 20px 80px #0007}.welcome-box h2{margin:8px 0;font-size:21px}.welcome-box p{font-size:12px;line-height:1.7;color:var(--muted)}.welcome-box button{background:var(--accent);color:#14221c;border:0;border-radius:10px;padding:11px 18px;font-weight:800}@keyframes spin{to{transform:rotate(360deg)}}@keyframes blink{50%{opacity:0}}@keyframes pulse{50%{box-shadow:0 0 15px #43d28b}}@keyframes wave{to{height:26px}}@media(max-width:430px){.card{padding:17px}.intro{gap:11px}.avatar-ring{height:65px;width:65px;flex-basis:65px}h1{font-size:22px}.eyebrow{font-size:8px}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+:root{--bg:#f5f7f6;--white:#fff;--ink:#22352f;--muted:#697b73;--accent:#347f69;--soft:#e9f4ee;--border:#dfe9e3;--shadow:0 12px 32px rgba(32,63,49,.06)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}button,input{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}.wrap{max-width:1150px;margin:auto;padding:0 20px}header{background:rgba(255,255,255,.96);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{font-size:22px;font-weight:800;color:var(--accent);display:flex;align-items:center;gap:9px}.brand-mark{display:grid;place-items:center;background:var(--accent);color:#fff;width:37px;height:37px;border-radius:12px}.navlinks{display:flex;gap:18px;font-size:14px;color:var(--muted)}.navlinks a:hover{color:var(--accent)}.hero{padding:65px 0 45px}.hero-inner{border-radius:25px;background:linear-gradient(120deg,#e4f1e8,#f9fbf8);padding:55px 50px;border:1px solid var(--border)}.eyebrow{color:var(--accent);font-size:13px;font-weight:bold;letter-spacing:1.5px;text-transform:uppercase}h1{font-size:clamp(31px,5vw,49px);line-height:1.18;margin:13px 0}h2{font-size:26px;margin:0 0 8px}h3{margin:0 0 8px}p{margin:0 0 16px}.muted{color:var(--muted)}.hero p{max-width:570px}.section{padding:24px 0 55px}.section-head{display:flex;justify-content:space-between;gap:16px;align-items:end;margin-bottom:23px}.search{width:290px;max-width:100%;border:1px solid var(--border);padding:13px 15px;border-radius:13px;background:#fff;outline:none}.search:focus{border-color:var(--accent)}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}.app-card,.package,.panel{background:var(--white);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow)}.app-card{padding:23px;display:flex;flex-direction:column;min-height:250px;transition:transform .2s,border-color .2s}.app-card:hover,.package:hover{transform:translateY(-3px);border-color:#a9d2bd}.app-icon{width:62px;height:62px;border-radius:17px;background:var(--soft);color:var(--accent);display:grid;place-items:center;font-size:23px;font-weight:800;overflow:hidden;margin-bottom:17px}.app-icon img{width:100%;height:100%;object-fit:cover}.app-card h3{font-size:19px}.app-card p{font-size:14px;color:var(--muted);flex:1}.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;padding:11px 16px;border-radius:11px;border:1px solid var(--accent);background:var(--accent);color:white;font-size:14px;font-weight:700;transition:opacity .2s}.btn:hover{opacity:.87}.btn-outline{background:white;color:var(--accent)}.btn-small{padding:9px 13px}.detail-top{padding:25px 0 10px}.back{background:none;border:0;color:var(--accent);font-weight:700;padding:8px 0}.banner{position:relative;min-height:245px;border-radius:22px;overflow:hidden;background:linear-gradient(115deg,#cce5d6,#e9f3ec);border:1px solid var(--border);display:flex;align-items:end;margin:10px 0 28px;background-position:center;background-size:cover}.banner:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,51,40,.85),rgba(22,51,40,.24))}.banner-content{position:relative;color:white;padding:34px;display:flex;align-items:center;gap:18px}.banner .app-icon{margin:0;background:white;flex-shrink:0}.banner h1{font-size:37px;margin:0 0 6px}.banner p{margin:0;color:#eaf5ee}.detail-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:22px}.panel{padding:24px;margin-bottom:22px}.panel h2{font-size:21px;margin-bottom:12px}.features{margin:0;padding-left:20px;color:var(--muted)}.features li{margin:7px 0}.packages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.package{padding:19px;display:flex;flex-direction:column;min-height:205px;transition:transform .2s}.package .tag{align-self:flex-start;background:var(--soft);color:var(--accent);font-size:12px;font-weight:700;border-radius:30px;padding:4px 10px;margin-bottom:13px}.package h3{font-size:17px;line-height:1.35}.duration{font-size:13px;color:var(--muted)}.price{font-size:24px;font-weight:800;color:var(--accent);margin:14px 0}.package .btn{margin-top:auto}.note{font-size:12px;color:var(--muted)}details{border:1px solid var(--border);border-radius:12px;margin-top:12px;padding:15px;background:#fff}summary{cursor:pointer;font-weight:700}details ol,details ul{margin-bottom:0;padding-left:22px}details li{margin:9px 0}.contact-box{background:#edf6f0;border-radius:14px;padding:18px}.contact-box .btn{width:100%;margin:5px 0}.footer{border-top:1px solid var(--border);background:#fff;padding:30px 0;color:var(--muted);font-size:14px}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.empty{grid-column:1/-1;color:var(--muted);padding:30px;text-align:center}.dialog{position:fixed;inset:0;background:rgba(20,36,29,.57);z-index:20;display:none;align-items:center;justify-content:center;padding:20px}.dialog.show{display:flex}.dialog-card{background:white;border-radius:19px;padding:26px;max-width:480px;width:100%;max-height:90vh;overflow:auto}.dialog-head{display:flex;justify-content:space-between;gap:10px;align-items:start}.close{border:0;background:#edf2ee;border-radius:9px;padding:6px 11px;font-size:22px}.order-text{white-space:pre-wrap;background:#f6f8f7;border:1px solid var(--border);border-radius:12px;padding:15px;margin:17px 0;font-size:14px;overflow-wrap:anywhere}.contact-actions{display:flex;flex-wrap:wrap;gap:9px}.contact-actions .btn{flex:1}.warning{background:#fff7e9;color:#77521b;border:1px solid #f1dfba;padding:12px;border-radius:10px;font-size:13px;margin-top:12px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.detail-layout{grid-template-columns:1fr}.packages{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:650px){.navlinks{gap:10px;font-size:12px}.hero{padding:28px 0}.hero-inner{padding:30px 24px}.grid,.packages{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.section-head{align-items:stretch;flex-direction:column}.search{width:100%}.app-card{padding:16px;min-height:235px}.app-card h3{font-size:17px}.banner-content{padding:24px;align-items:start}.banner h1{font-size:29px}.panel{padding:17px}.package{padding:15px}.price{font-size:21px}}@media(max-width:380px){.grid,.packages{grid-template-columns:1fr}.navlinks a:nth-child(2){display:none}.banner-content{flex-direction:column}.hero-inner{padding:26px 20px}}
+
+/* GIAO DIỆN HỒNG NHẸ - TOÀN BỘ FONT ARIAL */
+:root{--bg:#fff8fb;--white:#fff;--ink:#493743;--muted:#826e7c;--accent:#c76592;--soft:#fff0f6;--border:#f2dce6;--shadow:0 12px 30px rgba(162,83,121,.09)}
+body{font-family:Arial,Helvetica,sans-serif;letter-spacing:.01em;overflow-x:hidden}
+.hero-inner{background:linear-gradient(125deg,#ffe5f0,#fff9fc)}
+.banner{background:linear-gradient(120deg,#edb8d0,#fff0f7)}
+.banner:before{background:linear-gradient(90deg,rgba(92,38,67,.82),rgba(92,38,67,.18))}
+.contact-box{background:#fff0f6}.app-card:hover,.package:hover{border-color:#e8b4cb}
+.dialog{z-index:40;background:rgba(51,27,42,.6)}
+.dialog-card{max-width:530px}.qr-wrap{text-align:center;border:1px solid var(--border);background:#fff9fc;border-radius:16px;padding:16px;margin:15px 0}
+.qr-wrap img{width:min(245px,100%);height:auto;aspect-ratio:1;object-fit:contain;background:white;border-radius:12px}
+.qr-price{font-size:25px;color:var(--accent);font-weight:800}.qr-note{font-size:12px;color:var(--muted);margin:8px 0 0}
+.floating-contact{position:fixed;right:16px;bottom:20px;z-index:25;display:flex;flex-direction:column;align-items:end;gap:9px}
+.float-toggle{border:0;border-radius:99px;background:var(--accent);color:white;padding:13px 19px;font-weight:bold;box-shadow:0 7px 22px #c7659255}
+.float-links{display:none;flex-direction:column;gap:8px;align-items:end;background:#fff;padding:12px;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
+.float-links.show{display:flex}.float-links a{display:block;background:var(--soft);color:var(--ink);border-radius:9px;padding:9px 15px;font-size:14px;font-weight:bold}
+@media(max-width:650px){.floating-contact{right:12px;bottom:12px}.float-toggle{padding:12px 15px}}
+
+/* =========== GIAO DIỆN THẺ ẢNH SẢN PHẨM =========== */
+html,body,body *,button,input,textarea,select,summary{font-family:Arial,Helvetica,sans-serif!important}
+.grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.app-card,.package{padding:12px;background:#fff;border:1px solid #efd9e3;border-radius:18px;overflow:hidden;min-width:0;min-height:0;box-shadow:0 9px 25px rgba(127,67,97,.09)}
+.app-card .app-icon{display:none}
+.product-cover{position:relative;width:100%;aspect-ratio:1.6/1;overflow:hidden;border-radius:13px;background:linear-gradient(135deg,#f5c5de,#e9d5fb 60%,#ffebf2);display:flex;align-items:center;justify-content:center;margin-bottom:13px}
+.product-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.product-cover .cover-placeholder{display:flex;align-items:center;justify-content:center;gap:12px;padding:12px;text-align:center;font-size:clamp(15px,2vw,23px);font-weight:800;color:#7f4267;overflow-wrap:anywhere}
+.product-cover .cover-placeholder img{width:46px;height:46px;object-fit:contain;border-radius:12px;background:white;padding:3px;flex-shrink:0}
+.app-card h3,.package h3{font-size:15px;line-height:1.45;margin:0 2px 8px;font-weight:700;overflow-wrap:anywhere}
+.app-card p{font-size:13px;margin:0 2px 14px;line-height:1.5}
+.package .tag{margin:0 0 9px}
+.package .duration{margin-top:2px}
+.package .price{font-size:20px;margin:12px 0 14px;color:#c35385}
+.app-card .btn,.package .btn{width:100%;font-size:13px}
+.package{transition:transform .2s,border-color .2s}
+@media(max-width:950px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){.grid,.packages{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.app-card,.package{padding:9px;border-radius:15px}.product-cover{border-radius:11px}.product-cover .cover-placeholder{font-size:14px;gap:6px}.product-cover .cover-placeholder img{width:34px;height:34px}.app-card h3,.package h3{font-size:13px}.package .price{font-size:18px}.app-card .btn,.package .btn{padding:10px 6px;font-size:12px}}
+@media(max-width:370px){.grid,.packages{grid-template-columns:1fr}}
+
+/* THẺ TRANG CHỦ GIỐNG MẪU: ẢNH LỚN TRÊN, THÔNG TIN BÊN DƯỚI */
+.grid .app-card{display:flex;flex-direction:column;min-height:0;aspect-ratio:auto;padding:12px;border-radius:17px;background:#202b3e;border:1px solid #35435d;overflow:hidden;gap:0}
+.grid .app-card .product-cover{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:1.75/1;border-radius:12px;margin:0 0 12px;background:#ead8e9;overflow:hidden}
+.grid .app-card .product-cover>img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.grid .app-card .product-cover .cover-placeholder{width:100%;height:100%;padding:12px;display:grid;place-items:center;font-size:13px;color:#765c71}
+.grid .app-card .product-cover .cover-placeholder img{display:none}
+.grid .app-card .app-card-info{position:static;inset:auto;padding:0;background:none;color:#f5f7fb;display:flex;flex-direction:column;gap:10px;flex:1}
+.grid .app-card .app-card-info h3{font-size:15px;line-height:1.5;color:#f5f7fb;margin:0;text-shadow:none}
+.grid .app-card .app-card-info .btn{background:#df81aa;color:#fff;border:0;border-radius:10px;width:100%;font-weight:700;margin-top:auto}
+.grid .app-card .app-card-info .btn:hover{background:#c76592}
+.grid .app-card:hover{border-color:#d79bb8}
+@media(max-width:650px){.grid .app-card{padding:8px;border-radius:13px}.grid .app-card .product-cover{border-radius:9px;margin-bottom:9px}.grid .app-card .app-card-info h3{font-size:13px}.grid .app-card .app-card-info .btn{font-size:12px;padding:9px 4px}}
 </style>
 </head>
 <body>
-<canvas id="stars" aria-hidden="true"></canvas><div class="glow" aria-hidden="true"></div>
-<div class="layout"><main class="card">
-<div class="controls"><span class="color-label">Màu chủ đề</span><input id="colorPicker" type="color" value="#a8d5c3" aria-label="Đổi màu chủ đề"><button class="tool" id="modeBtn" type="button" aria-label="Đổi giao diện sáng tối">☾ Tối</button></div>
-<div class="intro"><div class="avatar-ring"><div class="avatar" id="avatar"><img src="https://cdn.upanhlaylink.com/i/A3SU2PL8.jpg" alt="Ảnh đại diện" onerror="this.style.display='none'"></div></div><div><span class="eyebrow">WELCOME TO MY SPACE</span><h1 class="typing" id="displayName" aria-label="Tên Của Bạn">Văn Trường</h1><div class="handle" id="handle">@adminslh · Creator / Explorer</div></div></div>
-<div class="status"><span class="dot"></span><span id="statusText">Online · Rất vui được gặp bạn</span></div>
-<p class="bio" id="bio">Một góc nhỏ để chia sẻ về bản thân, những điều mình yêu thích và các nơi bạn có thể tìm thấy mình.</p>
-<div class="tags" id="tags"><span class="tag">Creative</span><span class="tag">Music lover</span><span class="tag">Vietnam 🇻🇳</span></div>
-<div class="meta"><span class="clock" id="clock">--:--:--</span><div class="actions"><button type="button" class="action" id="copyBtn">⧉ Sao chép link</button><button type="button" class="action" id="shareBtn">↗ Chia sẻ</button><button type="button" class="action" id="heartBtn">♡ Thả tim</button></div></div>
-<div class="section-title"><span>CONNECT WITH ME</span><span id="linkCount">07 LINKS</span></div>
-<nav class="links" id="links" aria-label="Liên kết mạng xã hội">
-<a class="social" href="#" data-placeholder="1"><span class="social-icon">f</span><span class="social-text"><span class="social-name">Facebook</span><span class="social-desc">Kết nối Facebook</span></span><span class="social-arrow">↗</span></a>
-<a class="social" href="#" data-placeholder="1"><span class="social-icon">Z</span><span class="social-text"><span class="social-name">Zalo</span><span class="social-desc">Liên Hệ Công Việc qua Zalo</span></span><span class="social-arrow">↗</span></a>
-<a class="social" href="#" data-placeholder="1"><span class="social-icon">♪</span><span class="social-text"><span class="social-name">TikTok</span><span class="social-desc">Kênh TikTok</span></span><span class="social-arrow">↗</span></a>
-<a class="social" href="#" data-placeholder="1"><span class="social-icon">▶</span><span class="social-text"><span class="social-name">YouTube</span><span class="social-desc">Kênh YouTube</span></span><span class="social-arrow">↗</span></a>
-<a class="social" href="#" data-placeholder="1"><span class="social-icon">➤</span><span class="social-text"><span class="social-name">Telegram</span><span class="social-desc">Liên hệ Telegram</span></span><span class="social-arrow">↗</span></a>
-<a class="social" href="#" data-placeholder="1"><span class="social-icon">Z1</span><span class="social-text"><span class="social-name">Box Zalo 1</span><span class="social-desc">Nhóm Zalo Thông Báo Update WebSite</span></span><span class="social-arrow">↗</span></a>
-<a class="social" href="#" data-placeholder="1"><span class="social-icon">Z2</span><span class="social-text"><span class="social-name">Box Zalo 2</span><span class="social-desc">Nhóm Zalo Mua Bán Tài Khoản Prenium</span></span><span class="social-arrow">↗</span></a>
-</nav>
-<div class="section-title"><span>NOW PLAYING</span><span>♫</span></div>
-<section class="player" aria-label="Trình phát nhạc"><div class="player-main"><button class="play" type="button" id="playBtn" aria-label="Phát nhạc">▶</button><div class="song-info"><div class="song-title" id="songTitle">Bản nhạc yêu thích</div><div class="song-detail" id="songDetail">Điền musicUrl trong CONFIG để phát nhạc</div></div></div><div class="visualizer" id="visualizer" aria-hidden="true"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></div><div class="progress-row"><span id="elapsed">0:00</span><input id="seek" type="range" min="0" max="100" value="0" aria-label="Tua nhạc"><span id="duration">0:00</span></div><div class="music-extra"><label>Âm lượng <input id="volume" type="range" min="0" max="100" value="70" aria-label="Âm lượng"></label><span class="tip">Nhạc chỉ phát sau khi bạn tương tác</span></div></section>
-<audio id="audio" preload="metadata"></audio><div class="heart-count"><span class="heart">♥</span> <span id="heartCount">0</span> lượt yêu thích trên thiết bị này</div>
-</main><footer class="foot">Made with ♥ and a little bit of music</footer></div>
-<div class="welcome" id="welcome" hidden><div class="welcome-box"><div style="font-size:35px">✨</div><h2>Chào mừng đến với My Space!</h2><p>Cảm ơn bạn đã ghé thăm góc nhỏ của mình. Chúc bạn một ngày thật vui!</p><button id="welcomeOk" type="button">Khám phá ngay</button></div></div><div id="toast" role="status" aria-live="polite"></div>
+<header><div class="wrap nav"><a class="brand" href="#"><span class="brand-mark">G</span><span id="brandName"> Tiem Nha Bong</span></a><nav class="navlinks"><a href="#">Trang chủ</a><a href="#danh-sach">Sản phẩm</a><a href="#lien-he">Liên hệ</a></nav></div></header>
+<main id="main"></main>
+<footer class="footer" id="lien-he"><div class="wrap footer-row"><span>© <span id="footerName">Tiem Nha Bong</span> · Cửa hàng độc lập, không đại diện cho các ứng dụng.</span><span>Liên hệ mua hàng qua các kênh đã cấu hình.</span></div></footer>
+<div class="dialog" id="orderDialog" role="dialog" aria-modal="true" aria-labelledby="orderTitle"><div class="dialog-card"><div class="dialog-head"><div><h2 id="orderTitle">Thông tin đặt hàng</h2><p class="muted">Sao chép tin nhắn và gửi cho cửa hàng.</p></div><button class="close" onclick="closeOrder()" aria-label="Đóng">×</button></div><div id="orderText" class="order-text"></div><div id="qrPayment"></div><div class="contact-actions"><button class="btn" onclick="copyOrder()">📋 Sao chép nội dung</button></div><div id="contactLinks" class="contact-actions" style="margin-top:10px"></div><div id="contactWarning" class="warning" hidden>Chủ cửa hàng chưa cấu hình đường dẫn liên hệ.</div></div></div>
+<div class="floating-contact"><div id="floatingLinks" class="float-links"></div><button class="float-toggle" type="button" onclick="toggleContacts()" aria-expanded="false" id="floatButton">💬 Liên hệ</button></div>
 <script>
-/* ============== CHỈNH THÔNG TIN CÁ NHÂN TẠI ĐÂY ==============
- Thay từng url '#' của Website, Facebook, Zalo, TikTok, YouTube, Telegram và hai Box Zalo bằng link thật. avatarUrl: URL hình hoặc 'avatar.jpg'.
- musicUrl: 'nhac.mp3' (đặt nhac.mp3 cùng thư mục index.html) hoặc URL MP3 công khai.
- Trình duyệt không cho nhạc tự phát khi chưa có thao tác người dùng.
- =============================================================== */
-const CONFIG={
- name:'Văn Trường', handle:'@adminslh · Creator / Explorer',
- bio:'Một góc nhỏ để chia sẻ về bản thân, những điều mình yêu thích và các nơi bạn có thể tìm thấy mình.',
- avatarUrl:'https://cdn.upanhlaylink.com/i/A3SU2PL8.jpg',tags:['Creative','Music lover','Vietnam 🇻🇳'],status:'Online · Rất vui được gặp bạn',
- // DÁN LINK MP3 TRỰC TIẾP VÀO GIỮA HAI DẤU NHÁY BÊN DƯỚI.
- // Ví dụ: 'https://example.com/music.mp3' hoặc 'nhac.mp3' cùng thư mục.
- musicUrl:'',
- musicTitle:'Bản nhạc yêu thích',
- 
-links:[
-  {icon:'◎',name:'Website',desc:'Trang web của mình',url:'https://sublikehub.com/'},
-  {icon:'f',name:'Facebook',desc:'Kết nối Facebook',url:'https://www.facebook.com/vantruonggg.08'},
-  {icon:'Z',name:'Zalo',desc:'Nhắn tin qua Zalo',url:'https://zalo.me/0981251350'},
-  {icon:'♪',name:'TikTok',desc:'Video TikTok',url:'https://www.tiktok.com/@vantruongnene_11?is_from_webapp=1&sender_device=pc'},
-  {icon:'▶',name:'YouTube',desc:'Kênh YouTube',url:'http://www.youtube.com/@SubLikeHubCh%E1%BA%A5mCom'},
-  {icon:'➤',name:'Telegram',desc:'Liên hệ Telegram',url:'https://t.me/admSubLikeHub'},
-  {icon:'Z1',name:'Box Zalo 1',desc:'Thông báo khuyến mãi website',url:'https://zalo.me/g/rcngfz476'},
-  {icon:'Z2',name:'Box Zalo 2',desc:'Mua bán tài khoản Premium',url:'https://zalo.me/g/vzj45bc9lqytqbrz65gk'}
-]
+/* ======================================================================
+  KHU VỰC CHỈNH SỬA — BẠN CHỈ CẦN SỬA TỪ ĐÂY ĐẾN DÒNG "HẾT CẤU HÌNH"
+  MỖI ỨNG DỤNG LÀ MỘT KHỐI RIÊNG, KHÔNG CẦN CHỈNH HTML/CSS BÊN DƯỚI.
+
+  GIÁ: ghi số, KHÔNG ghi dấu chấm: gia: 39000 => hiển thị 39.000đ
+       gia: null => hiển thị "Liên hệ"
+  ẢNH: để "" nếu chưa có link. Website sẽ tự dùng hình dự phòng.
+  THÊM GÓI: sao chép một dòng { ten: ..., loai: ..., han: ..., gia: ..., anh: "" },
+  THÊM ỨNG DỤNG: sao chép nguyên một khối { ... } và đổi id, tên, dữ liệu.
+======================================================================== */
+
+const CUA_HANG = {
+  ten: "Tiem Nha Bong",                       // ĐỔI TÊN CỬA HÀNG TẠI ĐÂY
+  gioiThieu: "Khám phá các gói ứng dụng phù hợp với nhu cầu của bạn. Xem giá rõ ràng và liên hệ để được tư vấn trước khi mua.",
+  zalo: "https://zalo.me/0981251350",                            // THAY LINK LIÊN HỆ TẠI ĐÂY (ví dụ https://zalo.me/09xxxxxxxx)
+  facebook: "https://www.facebook.com/vantruonggg.08",                        // THAY LINK LIÊN HỆ TẠI ĐÂY (link trang Facebook)
+  nhomZalo: "https://zalo.me/g/vzj45bc9lqytqbrz65gk",                         // LINK NHÓM ZALO TẠI ĐÂY
+  // THÔNG TIN NHẬN CHUYỂN KHOẢN - nhập để hiển thị QR kèm số tiền từng gói
+  nganHang: "BIDV",                         // MÃ NGÂN HÀNG, ví dụ MB, VCB, ACB
+  soTaiKhoan: "8879818488",                       // SỐ TÀI KHOẢN NHẬN TIỀN
+  chuTaiKhoan: "TRAN HAI YEN",                      // TÊN CHỦ TÀI KHOẢN (không dấu nếu cần)
+  noiDungChuyenKhoan: "CHUYEN TIEN" // Nội dung giao dịch minh bạch
 };
-const $=id=>document.getElementById(id);let toastTimer;
-function toast(message){$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2800)}
-// Danh sách liên kết có sẵn trong HTML ngay cả khi JavaScript bị chặn.
-try{
- $('handle').textContent=CONFIG.handle;$('bio').textContent=CONFIG.bio;$('statusText').textContent=CONFIG.status;
- $('tags').replaceChildren(...CONFIG.tags.map(x=>{const el=document.createElement('span');el.className='tag';el.textContent=x;return el}));
- if(CONFIG.avatarUrl){let img=new Image();img.alt='Ảnh đại diện';img.src=CONFIG.avatarUrl;img.onload=()=>$('avatar').replaceChildren(img);img.onerror=()=>toast('Không tải được avatar; kiểm tra đường dẫn ảnh')}
- $('links').replaceChildren(...CONFIG.links.map(item=>{let a=document.createElement('a');a.className='social';let url=String(item.url||'#');if(!/^(https?:\/\/|mailto:|tel:)/i.test(url))url='#';a.href=url;if(url==='#')a.dataset.placeholder='1';if(url.startsWith('http')){a.target='_blank';a.rel='noopener noreferrer'};let ic=document.createElement('span');ic.className='social-icon';ic.textContent=item.icon||'🔗';let info=document.createElement('span');info.className='social-text';let name=document.createElement('div');name.className='social-name';name.textContent=item.name;let desc=document.createElement('div');desc.className='social-desc';desc.textContent=item.desc;info.append(name,desc);let arrow=document.createElement('span');arrow.className='social-arrow';arrow.textContent='↗';a.append(ic,info,arrow);return a}));
- $('linkCount').textContent=String(CONFIG.links.length).padStart(2,'0')+' LINKS';
-}catch(err){console.error('Không thể cập nhật thông tin Profile:',err)}
-$('links').addEventListener('click',e=>{const a=e.target.closest('a[data-placeholder]');if(a){e.preventDefault();toast('Bạn hãy điền đường link thật trong phần CONFIG của file HTML.')}});
-// Typing effect
-const name=CONFIG.name||'Văn Trường',nameEl=$('displayName');if(!matchMedia('(prefers-reduced-motion:reduce)').matches){nameEl.textContent='';let pos=0;const typing=setInterval(()=>{nameEl.textContent=name.slice(0,++pos);if(pos>=name.length){clearInterval(typing);setTimeout(()=>nameEl.classList.remove('typing'),650)}},95)}else{nameEl.textContent=name;nameEl.classList.remove('typing')}
-// Clock (device time)
-const dtf=new Intl.DateTimeFormat('vi-VN',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});function clock(){ $('clock').textContent=dtf.format(new Date())}clock();setInterval(clock,1000);
-// Theme
-const themeKey='myspace-theme',accentKey='myspace-accent';function setTheme(light){document.body.classList.toggle('light',light);$('modeBtn').textContent=light?'☀ Sáng':'☾ Tối';localStorage.setItem(themeKey,light?'light':'dark')}setTheme(localStorage.getItem(themeKey)==='light');$('modeBtn').addEventListener('click',()=>setTheme(!document.body.classList.contains('light')));
-function setAccent(color){if(!/^#[0-9a-fA-F]{6}$/.test(color))return;document.documentElement.style.setProperty('--accent',color);$('colorPicker').value=color;localStorage.setItem(accentKey,color)}setAccent(localStorage.getItem(accentKey)||'#a8d5c3');$('colorPicker').addEventListener('input',e=>setAccent(e.target.value));
-// Copy and share; Web Share / Clipboard require supported browser/security context.
-async function copyLink(){try{await navigator.clipboard.writeText(location.href);toast('Đã sao chép liên kết trang cá nhân!')}catch(e){const input=document.createElement('textarea');input.value=location.href;document.body.append(input);input.select();const ok=document.execCommand('copy');input.remove();toast(ok?'Đã sao chép liên kết!':'Không thể sao chép tự động. Hãy sao chép thanh địa chỉ.')}}
-$('copyBtn').addEventListener('click',copyLink);$('shareBtn').addEventListener('click',async()=>{if(navigator.share){try{await navigator.share({title:document.title,url:location.href})}catch(e){if(e.name!=='AbortError')copyLink()}}else copyLink()});
-// Hearts are per browser/device, not a global site counter.
-const heartKey='myspace-hearts';let hearts=Number(localStorage.getItem(heartKey))||0;$('heartCount').textContent=hearts;$('heartBtn').addEventListener('click',()=>{hearts++;localStorage.setItem(heartKey,String(hearts));$('heartCount').textContent=hearts;$('heartBtn').textContent='♥ Đã thả tim';toast('Cảm ơn bạn đã thả tim! ♥')});
-// Welcome once per browser session
-if(!sessionStorage.getItem('myspace-welcomed'))$('welcome').hidden=false;$('welcomeOk').addEventListener('click',()=>{$('welcome').hidden=true;sessionStorage.setItem('myspace-welcomed','yes')});
-// Nhạc cố định do chủ website cấu hình qua CONFIG.musicUrl.
-const audio=$('audio');
-audio.volume=.7;
-audio.loop=true;
-const configuredMusicUrl=String(CONFIG.musicUrl||'').trim();
-$('songTitle').textContent=CONFIG.musicTitle||'Bản nhạc yêu thích';
-if(configuredMusicUrl){
- audio.src=configuredMusicUrl;
- $('songDetail').textContent='Nhấn ▶ để nghe nhạc';
- audio.load();
-}else{
- $('songDetail').textContent='Chủ trang chưa cấu hình musicUrl';
+
+// Chỉnh giá bán trong từng mục sản phẩm bên dưới.
+// Giá trong file giữ nguyên theo dữ liệu đã nhập; hãy tự xác nhận trước khi bán.
+
+
+/* THAY LINK ẢNH TẠI ĐÂY:
+   - anhThe: "https://...jpg" trong mỗi ứng dụng = ảnh PHỦ KÍN TOÀN BỘ thẻ ở trang chủ.
+   - Ảnh nên có tỉ lệ dọc 4:5; ảnh khác tỉ lệ sẽ được cắt vừa khung.
+   - anh: "https://...jpg" trong từng gói = ảnh riêng cho ô gói.
+     Ví dụ: {ten:"Wink VIP 1 tháng",loai:"VIP",han:"1 tháng",gia:100000,anh:"https://example.com/wink.jpg"},
+   - Nếu để trống, website báo Chưa thêm ảnh sản phẩm; không hiện logo phóng to.
+   - Không cần chỉnh CSS hoặc mã hiển thị bên dưới.
+*/
+const SAN_PHAM = [
+
+  // ===================== 01. MEITU =====================
+  {
+    id: "meitu", ten: "Meitu", logo: "https://cdn.upanhlaylink.com/i/v0GaYMBr.png", anhThe: "https://cdn.upanhlaylink.com/i/v0GaYMBr.png", banner: "", // THAY LINK ẢNH TẠI ĐÂY
+    moTa: "MEITU SVIP (VIP+) - Cấp sẵn / chính chủ riêng tư",
+    tinhNang: ["Meitu là ứng dụng chỉnh sửa ảnh, làm đẹp AI đến từ Trung Quốc được hàng triệu người dùng toàn cầu tin chọn. Tuy nhiên không phải gói hội viên nào của Meitu cũng giống nhau. Nếu Meitu VIP (Hội viên Hồng) chỉ giải quyết được nhu cầu chỉnh ảnh cơ bản trên điện thoại, thì Meitu SVIP – VIP+ (Hội viên Kim Cương) mới là gói mở khóa toàn bộ sức mạnh thật sự của Meitu: AI chuyên sâu, đa nền tảng, chất lượng 4K và không giới hạn bất kỳ tính năng nào."],
+    huongDan: ["Chọn gói.", "Thanh toán.", "Liên hệ shop để được cấp acc."],
+    dieuKhoan: [
+      "Quy định sử dụng 1 thiết bị:",
+      "Sử dụng 1 thiết bị cố định.",
+      "Nguyên tắc thiết bị: Hệ thống lưu theo địa chỉ IP máy. 1 lần đăng nhập = 1 thiết bị.",
+      "Không đăng nhập máy thứ 2: Kể cả khi đã đăng xuất máy cũ hoặc xóa app, vẫn tính là quá thiết bị.",
+      "Đổi máy/Thêm máy: Liên hệ Admin để mua thêm slot (có giảm giá).",
+      "Vi phạm: Tự ý đăng nhập nhiều máy dẫn đến lỗi thiết bị toàn bộ máy sẽ bị từ chối bảo hành.",
+      "Nếu phát hiện sai phạm bạn phải đền bù slot bị mất và tiền phạt vi phạm theo quy định."
+    ],
+    goi: [ // SỬA GIÁ TẠI ĐÂY
+      {ten:"Meitu 1 tuần",loai:"VIP",han:"1 tuần",gia:35000},
+      {ten:"Meitu 1 tháng",loai:"VIP",han:"1 tháng",gia:75000},
+      {ten:"Meitu 3 tháng",loai:"VIP",han:"3 tháng",gia:199000},
+      {ten:"Meitu 5 tháng",loai:"VIP",han:"5 tháng",gia:300000},
+      {ten:"Meitu 6 tháng",loai:"VIP",han:"6 tháng",gia:370000},
+      {ten:"Meitu 12 tháng",loai:"VIP",han:"12 tháng",gia:550000}
+    ]
+  },
+
+  // ===================== 02. XINGTU =====================
+  {
+    id:"xingtu",ten:"Xingtu",logo:"https://cdn.upanhlaylink.com/i/6SoTv0gX.png", anhThe: "https://cdn.upanhlaylink.com/i/6SoTv0gX.png",banner:"", // THAY LINK ẢNH TẠI ĐÂY
+    moTa:"Lựa chọn các gói VIP và SVIP với thời hạn linh hoạt.",
+    tinhNang:["Có tùy chọn VIP và SVIP", "Tư vấn quyền lợi theo từng gói"],
+    huongDan:["Chọn VIP hoặc SVIP.","Thanh Toán.","Liên hệ shop để được hỗ trợ"],
+    dieuKhoan: [
+      "LƯU Ý QUAN TRỌNG KHI SỬ DỤNG",
+      "Cập nhật ứng dụng: Đảm bảo sử dụng bản Xingtu mới nhất để trải nghiệm đủ tính năng.",
+      "Đăng nhập duy nhất: Chỉ đăng nhập 01 lần duy nhất trên 01 thiết bị.",
+      "Tuyệt đối KHÔNG ĐĂNG XUẤT: Việc đăng xuất (Log out) sẽ làm mất quyền VIP và shop không thể hỗ trợ đăng nhập lại.",
+      "Không hỗ trợ đổi máy: Tài khoản gắn liền với thiết bị đầu tiên bạn đăng nhập.",
+      "Sử dụng văn minh: Không thay đổi bất kỳ thông tin cá nhân nào của tài khoản."
+    ],
+    goi:[ // SỬA RIÊNG TÊN, LOẠI VIP/SVIP, THỜI HẠN VÀ GIÁ TỪNG DÒNG
+      {ten:"Xingtu VIP 1 ngày",loai:"VIP",han:"1 ngày",gia:35000},
+      {ten:"Xingtu VIP 1 tháng",loai:"VIP",han:"1 tháng",gia:120000},
+      {ten:"Xingtu SVIP 1 ngày",loai:"SVIP",han:"1 ngày",gia:45000},
+      {ten:"Xingtu SVIP 1 tuần",loai:"SVIP",han:"1 tuần",gia:95000},
+      {ten:"Xingtu SVIP 1 tháng",loai:"SVIP",han:"1 tháng",gia:145000},
+      {ten:"Xingtu SVIP 12 tháng",loai:"SVIP",han:"6 tháng",gia:750000},
+      {ten:"Xingtu SVIP 1 tháng chính chủ",loai:"SVIP",han:"12 tháng",gia:260000},
+      {ten:"Xingtu SVIP 12 tháng chính chủ",loai:"SVIP",han:"12 tháng",gia:1200000}
+    ]
+  },
+
+  // ===================== 03. WINK =====================
+  {
+    id:"wink",ten:"Wink",logo:"https://cdn.upanhlaylink.com/i/8Af9mPRs.png", anhThe: "https://cdn.upanhlaylink.com/i/8Af9mPRs.png",banner:"", // THAY LINK ẢNH TẠI ĐÂY
+    moTa:"Các lựa chọn gói Wink theo thời hạn.",
+    tinhNang:["Nhiều lựa chọn thời hạn","Xác nhận quyền lợi trước khi mua"],
+    huongDan:["Chọn gói Wink.","Thanh toán","Liên hệ shop để được cấp tài khoản"],
+    dieuKhoan: [
+      "Quy định sử dụng 1 thiết bị:",
+      "Sử dụng 1 thiết bị cố định\nNguyên tắc thiết bị: Hệ thống lưu theo địa chỉ IP máy. 1 lần đăng nhập = 1 thiết bị.\nKhông đăng nhập máy thứ 2: Kế cả khi đã đăng xuất máy cũ hoặc xóa app, vẫn tính là quá thiết bị.\nĐối máy/Thêm máy: Liên hệ Admin để mua thêm slot (có giảm giá).\nVi phạm: Tự ý đăng nhập nhiều máy dẫn đến lỗi thiết bị toàn bộ máy sẽ bị từ chối bảo hành.\nNếu phát hiện sai phạm bạn phải đền bù slot bị mất và tiền phạt vi phạm theo quy định."
+    ],
+    goi:[
+      {ten:"Wink 1 tháng",loai:"VIP",han:"1 tháng",gia:100000},
+      {ten:"Wink 1 năm",loai:"VIP",han:"1 năm",gia:550000},
+      {ten:"Wink 1 tháng",loai:"SVIP",han:"1 tháng",gia:155000},
+      {ten:"Wink 12 tháng",loai:"SVIP",han:"12 tháng",gia:850000},
+    ]
+  },
+
+  // ===================== 04. CAPCUT =====================
+  {
+    id:"capcut",ten:"CapCut",logo:"https://cdn.upanhlaylink.com/i/WRniFaOv.png", anhThe: "https://cdn.upanhlaylink.com/i/WRniFaOv.png",banner:"", // THAY LINK ẢNH TẠI ĐÂY
+    moTa:"Danh sách gói CapCut với thời hạn mẫu dễ tùy chỉnh.",
+    tinhNang:["Lựa chọn thời hạn","Tư vấn thông tin gói"],
+    huongDan:["Chọn thời hạn.","Thanh toán","Liên hệ shop để được cấp tài khoản ."],
+    dieuKhoan: [
+      "CHÍNH SÁCH BẢO HÀNH",
+      "Bảo hành 1 đổi 1 nếu lỗi trong thời gian sử dụng.",
+      "Khách hàng không đăng nhập vượt quá số lượng thiết bị đã mua ( 1 điện thoại 1 máy tính).",
+      "Không bảo hành nếu khách hàng đăng nhập quá số lượng thiết bị đã mua hoặc spam liên tục trong việc thực hiện thao tác (Lỗi truy cập thường xuyên) =>  đợi từ 10 - 14 ngày để app tự động mở hạn chế/ khoá tài khoản",
+      "Không thay đổi thông tin đăng nhập , username của tài khoản để được bảo hành nhé",
+      "Lỗi thường xuyên liên hệ admin để được hỗ trợ nhé (tuỳ trường hợp)",
+      "Lưu ý : Vui lòng không rời Space trong quá trình sử dụng !! Chỉ đăng nhập PC bằng app, không đăng nhập bằng web",
+      "CÁCH ĐĂNG NHẬP TRÊN PC: đăng nhập email bằng điện thoại ngay trên app Capcut, sau đó quét QR lên PC"
+    ],
+    goi:[
+      {ten:"CapCut 1 tháng",loai:"Pro",han:"1 tháng",gia:95000},
+      {ten:"CapCut 3 tháng",loai:"Pro",han:"3 tháng",gia:250000},
+      {ten:"CapCut 6 tháng",loai:"Pro",han:"6 tháng",gia:499000},
+      {ten:"CapCut 12 tháng",loai:"Pro",han:"12 tháng",gia:950000},
+      {ten:"CapCut 1 tháng chính chủ",loai:"Pro",han:"1 tháng",gia:115000},
+      {ten:"CapCut 3 tháng chính chủ",loai:"Pro",han:"3 tháng",gia:300000},
+      {ten:"CapCut 6 tháng chính chủ",loai:"Pro",han:"6 tháng",gia:600000},
+
+   ]
+  },
+
+  // ===================== 05. YOUTUBE =====================
+  {
+    id:"youtube",ten:"YouTube",logo:"https://cdn.upanhlaylink.com/i/jqnzZ0QD.png", anhThe: "https://cdn.upanhlaylink.com/i/jqnzZ0QD.png",banner:"", // THAY LINK ẢNH TẠI ĐÂY
+    moTa:"Các gói YouTube theo thời hạn, thông tin mẫu cần xác nhận.",
+    tinhNang:["Chọn thời hạn","Liên hệ xác nhận quyền lợi"],
+    huongDan:["Chọn gói.","Thanh toán.","Gửi email cho shop để shop tiến hành nâng."],
+    dieuKhoan:["Gói bán phải tuân thủ điều khoản nền tảng.","Chỉ đặt mua sau khi xác nhận loại gói phù hợp."],
+    goi:[
+      {ten:"YouTube 1 tháng",loai:"Tiêu chuẩn",han:"1 tháng",gia:59000},
+      {ten:"YouTube 3 tháng",loai:"Tiêu chuẩn",han:"3 tháng",gia:149000},
+    ]
+  },
+
+  // ===================== 06. HYPIC =====================
+  {
+    id:"hypic",ten:"Hypic",logo:"https://cdn.upanhlaylink.com/i/0L2is97s.png", anhThe: "https://cdn.upanhlaylink.com/i/0L2is97s.png",banner:"", // THAY LINK ẢNH TẠI ĐÂY
+    moTa:"Gói Hypic mẫu, tùy chỉnh thông tin theo sản phẩm thực tế.",
+    tinhNang:["Tiêu chuẩn dễ thay đổi"],
+    huongDan:["Chọn gói Hypic.","Thanh toán.","Liên hệ shop để được cấp tài khoản."],
+    dieuKhoan: [
+      "LƯU Ý QUAN TRỌNG KHI SỬ DỤNG:",
+      "Phương thức đăng nhập: Tài khoản được thực hiện đăng nhập thông qua liên kết với TikTok.",
+      "Giới hạn thiết bị: Để đảm bảo quyền lợi và sự ổn định của tính năng Pro, tài khoản chỉ được sử dụng trên 01 thiết bị cố định. Việc đăng nhập nhiều thiết bị có thể làm ảnh hưởng đến trạng thái nâng cấp của tài khoản.",
+      "LƯU Ý QUAN TRỌNG: Tắt \"Gỡ bỏ ứng dụng không dùng\" để tránh trường hợp tự động đăng xuất khi lâu không sử dụng (đối với trường hợp này bên shop không chịu trách nhiệm vì đây là lỗi khách quan từ máy khách). Cách tắt chế độ này: Vào cài đặt của máy -> Chọn mục Ứng dụng -> tìm kiếm Appstore -> kéo xuống chọn mục Gỡ bỏ ứng dụng và tắt đi",
+      "Các bước thực hiện đăng nhập: để tránh bị lỗi truy cập thường xuyên thì làm kĩ từng bước ở dưới:\nBước 1: Mở trình duyệt (cực kỳ quan trọng vì đăng nhập trực tiếp bằng app dễ lỗi) và đăng nhập Tiktok trên điện thoại của bạn.",
+      "Bước 2: Nhập Username và Mật khẩu vào mục Đăng nhập của TikTok. Nếu cần nhận Mã xác minh (OTP), hãy nhấn vào \"Link nhận mã\" được cung cấp và ấn bắt đầu nhận mã",
+      "Bước 3: Sau khi đăng nhập thành công. Vào ứng dụng Hypic, chọn dòng chữ Đăng nhập bằng TikTok / Sign in with TikTok",
+      "Bước 4: Hệ thống sẽ tự động chuyển hướng bạn sang trình duyệt TikTok và tự động đăng nhập vào Hypic.",
+      "Lưu ý 1: Nếu hệ thống không chuyển hướng qua trình duyệt thì xoá app Tiktok, sau khi đăng nhập thành công thì tải lại app Tiktok (Nếu không muốn mất dữ liệu vào mục \"Dung lượng Iphone -> Tiktok -> Gỡ bỏ ứng dụng -> sau khi đăng nhập Hypic thành công thì chọn Cài đặt lại dữ liệu)",
+      "Lưu ý 2: Nếu đã đăng nhập trình duyệt mà khi vào Hypic bắt đăng nhập lại thì cứ nhập lại username và mật khẩu đã cấp như bước 2 là vào được nhé",
+      "Vui lòng không đăng xuất, xoá app, đổi máy, thay đổi thông tin nếu vi phạm sẽ không hoàn tiền và bảo hành !",
+      "Đối với tiktok dùng để đăng nhập vui lòng không thay đổi thông tin, sử dụng tài khoản với bất kì mục đích gì !! Bên em sẽ thu hồi tài khoản sau khi mình đăng nhập thành công hypic (sau 1h sẽ tự động thu hồi tính từ lúc đăng nhập tiktok thành công, vui lòng thao tác đăng nhập nhanh chóng)."
+    ],
+    goi:[{ten:"Hypic - Gói Năm",loai:"Tiêu chuẩn",han:"1 năm",gia:250000}]
+  },
+
+  // ===================== 07. CANVA =====================
+  {
+    id:"canva",ten:"Canva",logo:"https://cdn.upanhlaylink.com/i/DF8KxRdQ.png", anhThe: "https://cdn.upanhlaylink.com/i/DF8KxRdQ.png",banner:"", // THAY LINK ẢNH TẠI ĐÂY
+    moTa:"Gói Canva mẫu, vui lòng xác nhận hình thức cấp quyền.",
+    tinhNang:["Tiêu chuẩn dễ thay đổi"],
+    huongDan:["Chọn gói Canva.","Thanh toán.","Gửi email cho shop để shop tiến hành nâng."],
+    dieuKhoan:["Cần tuân thủ điều khoản cấp quyền của nền tảng."],
+    goi:[{ten:"Canva - Tiêu chuẩn",loai:"Tiêu chuẩn",han:"1 năm",gia:190000}]
+  },
+
+  // THÊM ỨNG DỤNG TẠI ĐÂY: đặt dấu phẩy sau khối cuối rồi thêm một khối mới.
+  // THAY LINK LOGO: sửa trường logo: "https://..." của từng ứng dụng ở trên.
+  // Logo lấy từ favicon của website ứng dụng; có thể thay bằng ảnh icon chính xác của bạn.
+];
+
+/* ===================== HẾT CẤU HÌNH =====================
+  KHÔNG CẦN SỬA PHẦN DƯỚI NÀY. Đây là mã hiển thị tự động.
+========================================================== */
+const $=id=>document.getElementById(id);
+const safe=v=>String(v??"").replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>typeof n==='number'&&Number.isFinite(n)?n.toLocaleString('vi-VN')+'đ':'Liên hệ';
+const icon=a=>`<div class="app-icon">${a.logo?`<img src="${safe(a.logo)}" alt="" onerror="this.remove();this.parentNode.textContent='${safe(a.ten.slice(0,1).toUpperCase())}'">`:safe(a.ten.slice(0,1).toUpperCase())}</div>`;
+// Ảnh từng thẻ: ưu tiên ảnh gói, sau đó ảnh ứng dụng; nếu chưa có ảnh thì dùng logo trên nền hồng.
+const cover=(app,goi)=>{
+ const src=(goi&&goi.anh)||app.anhThe||'';
+ const label=(goi&&goi.ten)||app.ten;
+ const fallback=`<div class="cover-placeholder"><span>Chưa thêm ảnh sản phẩm</span></div>`;
+ return `<div class="product-cover">${src?`<img src="${safe(src)}" alt="${safe(label)}" loading="lazy" onerror="this.outerHTML=decodeURIComponent('${encodeURIComponent(fallback)}')">`:fallback}</div>`;
+};
+const listItems=(items,tag='li')=>(items||[]).map(x=>`<${tag}>${safe(x)}</${tag}>`).join('');
+function showHome(){
+ $('main').innerHTML=`<section class="hero"><div class="wrap"><div class="hero-inner"><span class="eyebrow">Cửa hàng gói ứng dụng</span><h1>Ứng dụng yêu thích,<br>gói dùng phù hợp.</h1><p class="muted">${safe(CUA_HANG.gioiThieu)}</p><a class="btn" href="#danh-sach">Khám phá sản phẩm →</a></div></div></section><section class="section" id="danh-sach"><div class="wrap"><div class="section-head"><div><h2>Danh mục ứng dụng</h2><p class="muted">Chọn ứng dụng để xem gói và giá.</p></div><input class="search" id="search" type="search" placeholder="🔎 Tìm ứng dụng..." aria-label="Tìm ứng dụng"></div><div class="grid" id="appGrid"></div></div></section>`;
+ $('search').addEventListener('input',e=>drawApps(e.target.value));drawApps('');055477
 }
-$('playBtn').addEventListener('click',async()=>{
- if(!configuredMusicUrl){toast('Chưa có nhạc. Chủ trang hãy thêm link MP3 vào CONFIG.musicUrl.');return}
- if(audio.paused){try{await audio.play()}catch(e){toast('Không thể phát: kiểm tra link MP3, quyền truy cập hoặc định dạng nhạc.')}}else audio.pause();
-});
-function musicState(){const playing=!audio.paused;$('playBtn').textContent=playing?'❚❚':'▶';$('playBtn').setAttribute('aria-label',playing?'Tạm dừng nhạc':'Phát nhạc');$('visualizer').classList.toggle('playing',playing)}audio.addEventListener('play',musicState);audio.addEventListener('pause',musicState);audio.addEventListener('ended',musicState);
-for(const [i,b] of [...$('visualizer').children].entries()){b.style.setProperty('--delay',(-i*.11)+'s');b.style.setProperty('--dur',(.5+(i%6)*.16)+'s')}
-const fmt=n=>Number.isFinite(n)?Math.floor(n/60)+':'+String(Math.floor(n%60)).padStart(2,'0'):'0:00';audio.addEventListener('timeupdate',()=>{$('elapsed').textContent=fmt(audio.currentTime);if(Number.isFinite(audio.duration)&&audio.duration>0)$('seek').value=String(audio.currentTime/audio.duration*100)});audio.addEventListener('loadedmetadata',()=>{$('duration').textContent=fmt(audio.duration)});audio.addEventListener('error',()=>{if(configuredMusicUrl){$('songDetail').textContent='Không tải được nhạc — kiểm tra musicUrl';toast('Không tải được file nhạc. Hãy kiểm tra musicUrl.')}});$('seek').addEventListener('input',e=>{if(Number.isFinite(audio.duration))audio.currentTime=(Number(e.target.value)/100)*audio.duration});$('volume').addEventListener('input',e=>audio.volume=Number(e.target.value)/100);
-// Animated ambient particles (capped and reduced-motion aware)
-(function(){const canvas=$('stars'),ctx=canvas.getContext('2d');if(!ctx||matchMedia('(prefers-reduced-motion:reduce)').matches)return;let w,h,dots=[];function resize(){const ratio=Math.min(devicePixelRatio||1,2);w=innerWidth;h=innerHeight;canvas.width=Math.round(w*ratio);canvas.height=Math.round(h*ratio);ctx.setTransform(ratio,0,0,ratio,0,0);dots=Array.from({length:Math.min(85,Math.round(w*h/15000))},()=>({x:Math.random()*w,y:Math.random()*h,r:.5+Math.random()*1.3,s:.13+Math.random()*.35,a:.12+Math.random()*.25}))}addEventListener('resize',resize,{passive:true});resize();function frame(){ctx.clearRect(0,0,w,h);ctx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#a8d5c3';for(const p of dots){ctx.globalAlpha=p.a;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();p.y-=p.s;if(p.y<0){p.y=h;p.x=Math.random()*w}}ctx.globalAlpha=1;requestAnimationFrame(frame)}frame()})();
+function drawApps(query){let q=query.trim().toLocaleLowerCase('vi');let apps=SAN_PHAM.filter(a=>a.ten.toLocaleLowerCase('vi').includes(q));$('appGrid').innerHTML=apps.map(a=>`<article class="app-card">${cover(a)}<div class="app-card-info"><h3>${safe(a.ten)}</h3><a class="btn" href="#app/${encodeURIComponent(a.id)}" aria-label="Xem các gói ${safe(a.ten)}">Xem các gói →</a></div></article>`).join('')||'<p class="empty">Không tìm thấy ứng dụng phù hợp.</p>'}
+function showDetail(a){
+ $('main').innerHTML=`<div class="wrap detail-top"><button class="back" onclick="location.hash=''">← Quay lại danh sách</button><div class="banner" id="banner"><div class="banner-content">${icon(a)}<div><h1>${safe(a.ten)}</h1><p>${safe(a.moTa)}</p></div></div></div><div class="detail-layout"><div><section class="panel"><h2>Thông tin ứng dụng</h2><p class="muted">${safe(a.moTa)}</p><ul class="features">${listItems(a.tinhNang)}</ul></section><section class="panel"><h2>Các gói đang bán</h2><p class="muted">Chọn gói phù hợp để liên hệ đặt hàng.</p><div class="packages">${a.goi.map((p,i)=>`<article class="package">${cover(a,p)}<span class="tag">${safe(p.loai||'Gói ứng dụng')}</span><h3>${safe(p.ten)}</h3><div class="duration">Thời hạn: ${safe(p.han)}</div><div class="price">${money(p.gia)}</div><button class="btn" onclick="openOrder('${safe(a.id)}',${i})">Đặt mua ngay →</button></article>`).join('')}</div></section><section class="panel"><h2>Hướng dẫn & điều khoản</h2><details><summary>Hướng dẫn sử dụng ${safe(a.ten)}</summary><ol>${listItems(a.huongDan)}</ol></details><details><summary>Điều khoản sử dụng ${safe(a.ten)}</summary><ul>${listItems(a.dieuKhoan)}</ul></details></section></div><aside><div class="panel"><h2>Cần tư vấn?</h2><p class="muted">Liên hệ cửa hàng để hỏi về ${safe(a.ten)}.</p><div class="contact-box"><button class="btn" style="width:100%" onclick="openOrder('${safe(a.id)}',-1)">Liên hệ về ${safe(a.ten)}</button></div></div><div class="panel"><h3>Lưu ý</h3><p class="muted">Đây là cửa hàng độc lập, không phải website chính thức của ứng dụng.</p></div></aside></div></div>`;
+ if(a.banner){const b=$('banner');const img=new Image();img.onload=()=>b.style.backgroundImage=`url("${a.banner.replace(/"/g,'%22')}")`;img.src=a.banner}
+}
+function route(){const hash=decodeURIComponent(location.hash.slice(1));if(hash.startsWith('app/')){const app=SAN_PHAM.find(a=>a.id===hash.slice(4));if(app)showDetail(app);else showHome()}else showHome();window.scrollTo(0,0)}
+let currentMessage='';
+function openOrder(id,index){const a=SAN_PHAM.find(x=>x.id===id);if(!a)return;const p=a.goi[index];currentMessage=p?`Xin chào ${CUA_HANG.ten}!\nTôi muốn đặt gói:\nỨng dụng: ${a.ten}\nTên gói: ${p.ten}\nLoại: ${p.loai||'Không phân loại'}\nThời hạn: ${p.han}\nGiá hiển thị: ${money(p.gia)}\nNhờ cửa hàng tư vấn cách mua và sử dụng.`:`Xin chào ${CUA_HANG.ten}! Tôi muốn được tư vấn về ứng dụng ${a.ten}.`;
+ const qr=$('qrPayment');
+ if(p && typeof p.gia==='number' && p.gia>0 && CUA_HANG.nganHang.trim() && CUA_HANG.soTaiKhoan.trim()){
+   const noiDung=CUA_HANG.noiDungChuyenKhoan.trim() || 'Thanh toan don hang';
+   const url=`https://img.vietqr.io/image/${encodeURIComponent(CUA_HANG.nganHang.trim())}-${encodeURIComponent(CUA_HANG.soTaiKhoan.trim())}-compact2.png?amount=${encodeURIComponent(p.gia)}&addInfo=${encodeURIComponent(noiDung)}&accountName=${encodeURIComponent(CUA_HANG.chuTaiKhoan)}`;
+   qr.innerHTML=`<div class="qr-wrap"><h3>Quét QR để thanh toán</h3><img alt="Mã QR chuyển khoản" src="${safe(url)}" onerror="this.style.display='none';this.nextElementSibling.textContent='Không tải được mã QR. Vui lòng liên hệ cửa hàng.'"><p class="qr-note">Kiểm tra tên người nhận và số tiền trong ứng dụng ngân hàng trước khi chuyển.</p><div class="qr-price">${money(p.gia)}</div><div class="note">${safe(CUA_HANG.nganHang)} · ${safe(CUA_HANG.soTaiKhoan)} · ${safe(CUA_HANG.chuTaiKhoan)}</div><div class="note">Nội dung: ${safe(noiDung)}</div></div>`;
+ }else{qr.innerHTML='<div class="warning">Chưa cấu hình QR thanh toán hoặc gói chưa có giá. Hãy liên hệ cửa hàng để đặt mua.</div>'}
+ $('orderText').textContent=currentMessage;const links=[['Zalo',CUA_HANG.zalo],['Facebook',CUA_HANG.facebook],['Telegram',CUA_HANG.telegram]];$('contactLinks').innerHTML=links.filter(x=>/^https:\/\//i.test(x[1])).map(([name,url])=>`<a class="btn btn-outline btn-small" target="_blank" rel="noopener noreferrer" href="${safe(url)}">Mở ${name} ↗</a>`).join('');$('contactWarning').hidden=!!links.some(x=>/^https:\/\//i.test(x[1]));$('orderDialog').classList.add('show')}
+function closeOrder(){$('orderDialog').classList.remove('show')}
+async function copyOrder(){try{await navigator.clipboard.writeText(currentMessage);alert('Đã sao chép nội dung đặt hàng!')}catch(e){const t=document.createElement('textarea');t.value=currentMessage;document.body.appendChild(t);t.select();const ok=document.execCommand('copy');t.remove();alert(ok?'Đã sao chép nội dung đặt hàng!':'Không thể sao chép tự động. Hãy chọn và sao chép nội dung trong hộp thoại.')}}
+$('orderDialog').addEventListener('click',e=>{if(e.target===$('orderDialog'))closeOrder()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeOrder()});
+function toggleContacts(){const el=$('floatingLinks');const open=el.classList.toggle('show');$('floatButton').setAttribute('aria-expanded',String(open))}
+function setupFloatingContacts(){
+ const items=[['Facebook',CUA_HANG.facebook],['Zalo',CUA_HANG.zalo],['Nhóm Zalo',CUA_HANG.nhomZalo],['Telegram',CUA_HANG.telegram]];
+ const valid=items.filter(x=>/^https:\/\//i.test(x[1]));
+ $('floatingLinks').innerHTML=valid.length?valid.map(([name,url])=>`<a href="${safe(url)}" target="_blank" rel="noopener noreferrer">${safe(name)} ↗</a>`).join(''):'<span class="note">Chưa thêm liên kết liên hệ.</span>';
+}
+setupFloatingContacts();
+$('brandName').textContent=CUA_HANG.ten;$('footerName').textContent=CUA_HANG.ten;document.title=CUA_HANG.ten+' | Cửa hàng gói ứng dụng';window.addEventListener('hashchange',route);route();
 </script>
 </body>
 </html>
